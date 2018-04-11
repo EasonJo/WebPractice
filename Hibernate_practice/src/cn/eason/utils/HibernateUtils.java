@@ -19,4 +19,14 @@ public class HibernateUtils {
     public static Session openSession() {
         return sf.openSession();
     }
+
+    /**
+     * 获取绑定当前线程的 Session,
+     * getCurrentSession在事务提交后会自动关闭当前session,所以不用手动关闭 Session
+     *
+     * @return {@link Session}
+     */
+    public static Session getCurrentSession() {
+        return sf.getCurrentSession();
+    }
 }

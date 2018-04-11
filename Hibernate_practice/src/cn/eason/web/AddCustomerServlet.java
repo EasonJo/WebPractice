@@ -34,6 +34,7 @@ public class AddCustomerServlet extends javax.servlet.http.HttpServlet {
             e.printStackTrace();
         }
 
-        request.getRequestDispatcher(request.getContextPath() + "/ListCustomerServlet").forward(request,response);
+        //通知浏览器重定向到列表页
+        response.sendRedirect(request.getContextPath()+"/ListCustomerServlet");
     }
 }

@@ -29,4 +29,24 @@
         <servlet-name>AddCustomerServlet</servlet-name>
         <url-pattern>/AddCustomerServlet</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <description></description>
+        <display-name>ListCustomerServlet</display-name>
+        <servlet-name>ListCustomerServlet</servlet-name>
+        <servlet-class>cn.eason.web.ListCustomerServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ListCustomerServlet</servlet-name>
+        <url-pattern>/ListCustomerServlet</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <description></description>
+        <display-name>AddLinkManServlet</display-name>
+        <servlet-name>AddLinkManServlet</servlet-name>
+        <servlet-class>cn.eason.web.AddLinkManServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>AddLinkManServlet</servlet-name>
+        <url-pattern>/AddLinkManServlet</url-pattern>
+    </servlet-mapping>
 </web-app>
