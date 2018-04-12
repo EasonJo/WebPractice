@@ -1,7 +1,4 @@
-package cn.eason.domain;
-
-import java.util.HashSet;
-import java.util.Set;
+package cn.itheima.domain;
 
 public class Customer {
 
@@ -27,7 +24,6 @@ public class Customer {
     private String cust_linkman;
     private String cust_phone;
     private String cust_mobile;
-    private Set<LinkMan> linkMans =  new HashSet<>();
 
     public Long getCust_id() {
         return cust_id;
@@ -93,26 +89,10 @@ public class Customer {
         this.cust_mobile = cust_mobile;
     }
 
-    public Set<LinkMan> getLinkMans() {
-        return linkMans;
-    }
-
-    public void setLinkMans(Set<LinkMan> linkMans) {
-        this.linkMans = linkMans;
-    }
-
     @Override
     public String toString() {
-        return "Customer{" +
-            "cust_id=" + cust_id +
-            ", cust_name='" + cust_name + '\'' +
-            ", cust_source='" + cust_source + '\'' +
-            ", cust_industry='" + cust_industry + '\'' +
-            ", cust_level='" + cust_level + '\'' +
-            ", cust_linkman='" + cust_linkman + '\'' +
-            ", cust_phone='" + cust_phone + '\'' +
-            ", cust_mobile='" + cust_mobile + '\'' +
-            ", linkMans=" + linkMans +
-            '}';
+        return "Customer [cust_id=" + cust_id + ", cust_name=" + cust_name + "]";
     }
+
+
 }

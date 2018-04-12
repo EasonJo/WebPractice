@@ -32,7 +32,17 @@
         <property name="lkm_position" column="lkm_position" />
         <property name="lkm_memo" column="lkm_memo" />
 
-        <many-to-one name="customer" class="cn.eason.domain.Customer" column="lkm_cust_id" cascade="save-update,delete"/>
+        <!--
+		fetch 决定加载的sql语句
+			select: 使用单表查询
+			join : 多表查询
+		lazy  决定加载时机
+			false: 立即加载
+			proxy: 由customer的类级别加载策略决定.
+		 -->
+
+        <many-to-one name="customer" class="cn.eason.domain.Customer" column="lkm_cust_id" cascade="save-update"
+            lazy="proxy" />
 
     </class>
 </hibernate-mapping>

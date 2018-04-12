@@ -18,7 +18,6 @@ public class Demo {
         Transaction tx = session.beginTransaction();
 
         Customer c = new Customer();
-        c.setCust_id(3L);
         c.setCust_name("百度");
         c.setCust_mobile("18611729965");
         c.setCust_level("1");
