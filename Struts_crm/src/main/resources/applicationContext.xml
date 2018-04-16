@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:p="http://www.springframework.org/schema/p" xsi:schemaLocation="http://www.springframework.org/schema/beans
+			http://www.springframework.org/schema/beans/spring-beans.xsd" default-lazy-init="false">
+
+    <!--<bean name="user" class="cn.eason.bean.User" init-method="init" destroy-method="destory">
+        <property name="name" value="Eason" />
+        <property name="age" value="32" />
+        &lt;!&ndash;引用类型&ndash;&gt;
+        <property name="car" ref="car"/>
+    </bean>-->
+
+    <bean name="user" class="cn.eason.bean.User" init-method="init" destroy-method="destory">
+        <constructor-arg name="name" value="Eason" index="0" type="java.lang.String" />
+        <constructor-arg name="age" value="32" />
+        <!--引用类型-->
+        <constructor-arg name="car" ref="car" />
+    </bean>
+
+    <bean name="user4" class="cn.eason.bean.User" p:name="Eason" p:age="32" p:car-ref="car" />
+
+    <bean name="car" class="cn.eason.bean.Car" />
+
+    <bean name="user2" class="cn.eason.spring.BeanFactory" factory-method="CreateUser" />
+    <bean name="user3" factory-bean="useFactory" factory-method="createUser2" />
+    <bean name="useFactory" class="cn.eason.spring.BeanFactory" />
+
+
+    <bean class="cn.eason.bean.CollectionBeans" name="cb">
+        <property name="arr">
+            <array>
+                <value>jack</value>
+                <value>rosi</value>
+                <ref bean="user" />
+            </array>
+        </property>
+        <property name="list">
+            <list>
+                <value>jack</value>
+                <value>roce</value>
+                <ref bean="car" />
+            </list>
+        </property>
+    </bean>
+</beans>
