@@ -15,17 +15,22 @@ import javax.annotation.Resource;
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration("classpath:applicationContext.xml")
 public class Demo3 {
-    @Resource(name = "loginServiceTarget")
-    private LoginService loginService;
+//    @Resource(name = "loginServiceTarget")
+//    private LoginService loginService;
     @Resource(name = "loginService")
     private LoginService loginService2;
 
-    @Test
+   /* @Test
     public void fun1() {
         //对象不一样.
         System.out.println(loginService);
         System.out.println(loginService2);
 
         loginService.login();
+    }*/
+
+    @Test
+    public void fun2() {
+        loginService2.login();
     }
 }

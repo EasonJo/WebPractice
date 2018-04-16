@@ -51,23 +51,27 @@
     <bean name="car2" class="cn.eason.bean.Car" p:name="布加迪威龙" p:color="白色" />
 
 
-    <bean class="cn.eason.service.impl.LoginServiceImpl" name="loginServiceTarget" />
+    <!--<bean class="cn.eason.service.impl.LoginServiceImpl" name="loginServiceTarget" />-->
 
     <bean class="cn.eason.springaop.MyAdvice" name="advice" />
 
-    <aop:config>
-        <!--配置切入点-->
+    <!--xml 配置的方式实现 AOP-->
+    <!--<aop:config>
+        &lt;!&ndash;配置切入点&ndash;&gt;
         <aop:pointcut id="pc" expression="execution(* cn.eason.service.impl.*ServiceImpl.*(..))" />
         <aop:aspect ref="advice">
             <aop:before method="before" pointcut-ref="pc" />
-            <!--异常不执行-->
+            &lt;!&ndash;异常不执行&ndash;&gt;
             <aop:after-returning method="afterReturning" pointcut-ref="pc"/>
-            <!--环绕-->
+            &lt;!&ndash;环绕&ndash;&gt;
             <aop:around method="around" pointcut-ref="pc"/>
-            <!--出现异常执行-->
+            &lt;!&ndash;出现异常执行&ndash;&gt;
             <aop:after-throwing method="afterException" pointcut-ref="pc"/>
-            <!--后置,异常也会执行-->
+            &lt;!&ndash;后置,异常也会执行&ndash;&gt;
             <aop:after method="after" pointcut-ref="pc"/>
         </aop:aspect>
-    </aop:config>
+    </aop:config>-->
+
+    <!--这种方式是使用注解的方式完整织入-->
+    <aop:aspectj-autoproxy/>
 </beans>
