@@ -21,7 +21,6 @@ public class UserAction extends ActionSupport implements ModelDriven<User> {
         return "toHome";
     }
 
-
     @Override
     public User getModel() {
         return user;

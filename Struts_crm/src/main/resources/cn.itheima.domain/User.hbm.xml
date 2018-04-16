@@ -4,12 +4,12 @@
 <hibernate-mapping package="cn.itheima.domain">
     <class name="User" table="sys_user">
         <id name="user_id">
-            <generator class="native"></generator>
+            <generator class="native"/>
         </id>
-        <property name="user_code"></property>
-        <property name="user_name"></property>
-        <property name="user_password"></property>
-        <property name="user_state"></property>
+        <property name="user_code"/>
+        <property name="user_name"/>
+        <property name="user_password"/>
+        <property name="user_state"/>
 
     </class>
 </hibernate-mapping>

@@ -14,6 +14,7 @@ public class LinkManServiceImpl implements LinkManService {
     private CustomerDao cd = new CustomerDaoImpl();
     private LinkManDao lmd = new LinkManDaoImpl();
 
+    @Override
     public void save(LinkMan lm) {
         //打开事务
         HibernateUtils.getCurrentSession().beginTransaction();

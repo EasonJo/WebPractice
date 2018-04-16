@@ -15,6 +15,7 @@ public class CustomerServiceImpl implements CustomerService {
 
     private CustomerDao customerDao = new CustomerDaoImpl();
 
+    @Override
     public void save(Customer c) {
         Session session = HibernateUtils.getCurrentSession();
         //打开事务
@@ -30,6 +31,7 @@ public class CustomerServiceImpl implements CustomerService {
         tx.commit();
     }
 
+    @Override
     public List<Customer> getAll() {
         Session session = HibernateUtils.getCurrentSession();
         //打开事务
@@ -43,6 +45,7 @@ public class CustomerServiceImpl implements CustomerService {
         return list;
     }
 
+    @Override
     public List<Customer> getAll(DetachedCriteria dc) {
         Session session = HibernateUtils.getCurrentSession();
         //打开事务

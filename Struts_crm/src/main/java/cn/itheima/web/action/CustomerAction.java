@@ -35,7 +35,6 @@ public class CustomerAction extends ActionSupport implements ModelDriven<Custome
         // 放到ActionContext
         ActionContext.getContext().put("list", list);
 
-
         return "list";
     }
 
