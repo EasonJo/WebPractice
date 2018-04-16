@@ -1,8 +1,9 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:context="http://www.springframework.org/schema/context" xmlns:p="http://www.springframework.org/schema/p"
-    xsi:schemaLocation="http://www.springframework.org/schema/beans
-			http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd"
+    xmlns:aop="http://www.springframework.org/schema/aop" xsi:schemaLocation="http://www.springframework.org/schema/beans
+			http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context
+			http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd"
     default-lazy-init="false">
 
     <!--<bean name="user" class="cn.eason.bean.User" init-method="init" destroy-method="destory">
@@ -46,5 +47,27 @@
      </bean>-->
 
     <context:component-scan base-package="cn.eason" />
-    <bean name="car2" class="cn.eason.bean.Car" p:name="布加迪威龙" p:color="白色"/>
+    <!--注入多个实例-->
+    <bean name="car2" class="cn.eason.bean.Car" p:name="布加迪威龙" p:color="白色" />
+
+
+    <bean class="cn.eason.service.impl.LoginServiceImpl" name="loginServiceTarget" />
+
+    <bean class="cn.eason.springaop.MyAdvice" name="advice" />
+
+    <aop:config>
+        <!--配置切入点-->
+        <aop:pointcut id="pc" expression="execution(* cn.eason.service.impl.*ServiceImpl.*(..))" />
+        <aop:aspect ref="advice">
+            <aop:before method="before" pointcut-ref="pc" />
+            <!--异常不执行-->
+            <aop:after-returning method="afterReturning" pointcut-ref="pc"/>
+            <!--环绕-->
+            <aop:around method="around" pointcut-ref="pc"/>
+            <!--出现异常执行-->
+            <aop:after-throwing method="afterException" pointcut-ref="pc"/>
+            <!--后置,异常也会执行-->
+            <aop:after method="after" pointcut-ref="pc"/>
+        </aop:aspect>
+    </aop:config>
 </beans>

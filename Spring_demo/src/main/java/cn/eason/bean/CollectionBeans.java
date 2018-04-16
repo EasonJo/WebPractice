@@ -4,6 +4,11 @@ import java.util.List;
 import java.util.Map;
 import java.util.Properties;
 
+
+/**
+ * @author Eason PU
+ * @date Create in 17:55 16/04/2018
+ */
 public class CollectionBeans {
     private Object[] arr;
     private List list;

@@ -1,6 +1,7 @@
 package cn.eason.demo;
 
 import cn.eason.dao.UserDao;
+import cn.eason.proxy.LoginServiceProxyFactory;
 import cn.eason.service.LoginService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -11,7 +12,7 @@ import javax.annotation.Resource;
 
 /**
  * @author Eason PU
- * @date  Create in 17:44 16/04/2018
+ * @date Create in 17:44 16/04/2018
  */
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration("classpath:applicationContext.xml")
@@ -30,5 +31,17 @@ public class Demo2 {
     @Test
     public void fun2() {
         loginService.updateUser();
+    }
+
+    @Test
+    public void fun3() {
+        LoginService loginS = LoginServiceProxyFactory.getLoginServiceProxy(loginService);
+        loginS.updateUser();
+    }
+
+    @Test
+    public void fun4() {
+        LoginService ls = LoginServiceProxyFactory.getLoginServiceProxyWithCglib(loginService.getClass());
+        ls.login();
     }
 }
