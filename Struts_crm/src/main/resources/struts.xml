@@ -9,19 +9,19 @@
      -->
     <constant name="struts.devMode" value="true" />
     <package name="crm" namespace="/" extends="struts-default">
-        <!--<interceptors>
-            &lt;!&ndash; 注册拦截器 &ndash;&gt;
+        <interceptors>
+            <!-- 注册拦截器 -->
             <interceptor name="loginInterceptor" class="cn.itheima.web.interceptor.LoginInterceptor" />
-            &lt;!&ndash; 注册拦截器栈 &ndash;&gt;
+            <!-- 注册拦截器栈 -->
             <interceptor-stack name="myStack">
                 <interceptor-ref name="loginInterceptor">
                     <param name="excludeMethods">login</param>
                 </interceptor-ref>
-                &lt;!&ndash;<interceptor-ref name="defaultStack" />&ndash;&gt;
+                <!--<interceptor-ref name="defaultStack" />-->
             </interceptor-stack>
         </interceptors>
-        &lt;!&ndash; 指定包中的默认拦截器栈 &ndash;&gt;
-        <default-interceptor-ref name="myStack" />-->
+        <!-- 指定包中的默认拦截器栈 -->
+        <default-interceptor-ref name="myStack" />
         <!-- 定义全局结果集 -->
         <global-results>
             <result name="toLogin" type="redirect">/login.jsp</result>

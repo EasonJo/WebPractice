@@ -1,14 +1,17 @@
 package cn.itheima.service.impl;
 
 import cn.itheima.dao.UserDao;
-import cn.itheima.dao.impl.UserDaoImpl;
 import cn.itheima.domain.User;
 import cn.itheima.service.UserService;
 import cn.itheima.utils.HibernateUtils;
 
 public class UserServiceImpl implements UserService {
 
-    private UserDao ud = new UserDaoImpl();
+    private UserDao ud;
+
+    public void setUd(UserDao ud) {
+        this.ud = ud;
+    }
 
     @Override
     public User login(User user) {

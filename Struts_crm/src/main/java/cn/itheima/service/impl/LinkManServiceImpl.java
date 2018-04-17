@@ -2,8 +2,6 @@ package cn.itheima.service.impl;
 
 import cn.itheima.dao.CustomerDao;
 import cn.itheima.dao.LinkManDao;
-import cn.itheima.dao.impl.CustomerDaoImpl;
-import cn.itheima.dao.impl.LinkManDaoImpl;
 import cn.itheima.domain.Customer;
 import cn.itheima.domain.LinkMan;
 import cn.itheima.service.LinkManService;
@@ -11,8 +9,16 @@ import cn.itheima.utils.HibernateUtils;
 
 public class LinkManServiceImpl implements LinkManService {
 
-    private CustomerDao cd = new CustomerDaoImpl();
-    private LinkManDao lmd = new LinkManDaoImpl();
+    private CustomerDao cd ;
+    private LinkManDao lmd ;
+
+    public void setCd(CustomerDao cd) {
+        this.cd = cd;
+    }
+
+    public void setLmd(LinkManDao lmd) {
+        this.lmd = lmd;
+    }
 
     @Override
     public void save(LinkMan lm) {

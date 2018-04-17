@@ -14,6 +14,14 @@
         <welcome-file>default.jsp</welcome-file>
     </welcome-file-list>
 
+    <listener>
+        <listener-class>org.springframework.web.context.ContextLoader</listener-class>
+    </listener>
+    <context-param>
+        <param-name>contextConfigLocation</param-name>
+        <param-value>classpath:applicationContext.xml</param-value>
+    </context-param>
+
     <!-- struts2的核心过滤器 -->
     <filter>
         <filter-name>struts2</filter-name>

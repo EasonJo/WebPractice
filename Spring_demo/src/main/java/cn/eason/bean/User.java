@@ -14,6 +14,7 @@ import javax.annotation.Resource;
  */
 @Component("user")
 public class User {
+    private int id;
     @Value("Eason")
     private String name;
     @Value("18")
@@ -57,12 +58,12 @@ public class User {
 
     @PreDestroy // destory-method
     public void destory() {
-        System.out.println("destory");
+        System.out.println(" 对象已销毁,执行 destory-method");
     }
 
     @PostConstruct //init-method
     public void init() {
-        System.out.println("init method");
+        System.out.println("对象已创建,执行 Init-Method");
     }
 
     @Override

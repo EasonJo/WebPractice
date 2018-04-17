@@ -7,6 +7,7 @@ import org.hibernate.Session;
 
 public class LinkManDaoImpl implements LinkManDao {
 
+    @Override
     public void save(LinkMan lm) {
         //1 获得session
         Session session = HibernateUtils.getCurrentSession();

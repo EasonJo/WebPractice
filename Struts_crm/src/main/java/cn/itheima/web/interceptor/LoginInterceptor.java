@@ -6,6 +6,9 @@ import com.opensymphony.xwork2.interceptor.MethodFilterInterceptor;
 
 import java.util.Map;
 
+/**
+ * @author Eason
+ */
 public class LoginInterceptor extends MethodFilterInterceptor {
     //指定不拦截登陆方法. 其他方法都拦截
 
@@ -24,7 +27,5 @@ public class LoginInterceptor extends MethodFilterInterceptor {
             //存在=>已经登陆=>放行
             return invocation.invoke();
         }
-
     }
-
 }

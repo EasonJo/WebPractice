@@ -1,7 +1,6 @@
 package cn.itheima.service.impl;
 
 import cn.itheima.dao.CustomerDao;
-import cn.itheima.dao.impl.CustomerDaoImpl;
 import cn.itheima.domain.Customer;
 import cn.itheima.service.CustomerService;
 import cn.itheima.utils.HibernateUtils;
@@ -11,9 +10,16 @@ import org.hibernate.criterion.DetachedCriteria;
 
 import java.util.List;
 
+/**
+ * @author Eason
+ */
 public class CustomerServiceImpl implements CustomerService {
 
-    private CustomerDao customerDao = new CustomerDaoImpl();
+    private CustomerDao customerDao;
+
+    public void setCustomerDao(CustomerDao customerDao) {
+        this.customerDao = customerDao;
+    }
 
     @Override
     public void save(Customer c) {

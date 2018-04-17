@@ -1,7 +1,8 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xmlns:p="http://www.springframework.org/schema/p" xsi:schemaLocation="http://www.springframework.org/schema/beans
-			http://www.springframework.org/schema/beans/spring-beans.xsd" default-lazy-init="false">
+    xmlns:context="http://www.springframework.org/schema/context" xsi:schemaLocation="http://www.springframework.org/schema/beans
+			http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd"
+    default-lazy-init="false">
 
     <!--<bean name="user" class="cn.eason.bean.User" init-method="init" destroy-method="destory">
         <property name="name" value="Eason" />
@@ -10,36 +11,20 @@
         <property name="car" ref="car"/>
     </bean>-->
 
-    <bean name="user" class="cn.eason.bean.User" init-method="init" destroy-method="destory">
-        <constructor-arg name="name" value="Eason" index="0" type="java.lang.String" />
-        <constructor-arg name="age" value="32" />
-        <!--引用类型-->
-        <constructor-arg name="car" ref="car" />
+    <bean class="cn.itheima.dao.impl.CustomerDaoImpl" name="customerDao" />
+    <bean class="cn.itheima.dao.impl.LinkManDaoImpl" name="linkManDao" />
+    <bean class="cn.itheima.dao.impl.UserDaoImpl" name="userDao" />
+
+    <bean class="cn.itheima.service.impl.LinkManServiceImpl" name="service">
+        <property name="cd" ref="customerDao" />
+        <property name="lmd" ref="linkManDao" />
     </bean>
-
-    <bean name="user4" class="cn.eason.bean.User" p:name="Eason" p:age="32" p:car-ref="car" />
-
-    <bean name="car" class="cn.eason.bean.Car" />
-
-    <bean name="user2" class="cn.eason.spring.BeanFactory" factory-method="CreateUser" />
-    <bean name="user3" factory-bean="useFactory" factory-method="createUser2" />
-    <bean name="useFactory" class="cn.eason.spring.BeanFactory" />
-
-
-    <bean class="cn.eason.bean.CollectionBeans" name="cb">
-        <property name="arr">
-            <array>
-                <value>jack</value>
-                <value>rosi</value>
-                <ref bean="user" />
-            </array>
-        </property>
-        <property name="list">
-            <list>
-                <value>jack</value>
-                <value>roce</value>
-                <ref bean="car" />
-            </list>
-        </property>
+    <bean class="cn.itheima.service.impl.CustomerServiceImpl" name="customerService">
+        <property name="customerDao" ref="customerDao" />
     </bean>
+    <bean class="cn.itheima.service.impl.UserServiceImpl" name="userService">
+        <property name="ud" ref="userDao" />
+    </bean>
+    
+    <context:component-scan base-package="cn.itheima"/>
 </beans>

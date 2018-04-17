@@ -73,5 +73,18 @@
     </aop:config>-->
 
     <!--这种方式是使用注解的方式完整织入-->
-    <aop:aspectj-autoproxy/>
+    <aop:aspectj-autoproxy />
+
+    <!--使用 spring jdbc 操作数据库-->
+    <!--<bean name="datasource" class="com.mchange.v2.c3p0.ComboPooledDataSource" p:driverClass="com.mysql.jdbc.Driver"-->
+        <!--p:jdbcUrl="jdbc:mysql:///hibernate" p:user="pujl" p:password="102107" />-->
+    <!--使用 JdbcDaoSupport 的方式引入此类,就不再需要手动注入 jdbctemplate 了-->
+    <!--<bean name="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate" p:dataSource-ref="datasource" />-->
+
+
+    <!--使用 properties 文件的方式配置数据库信息-->
+    <context:property-placeholder file-encoding="UTF-8" location="classpath:db.properties"/>
+    <bean name="datasource" class="com.mchange.v2.c3p0.ComboPooledDataSource" p:jdbcUrl="${jdbc.jdbcUrl}"
+        p:driverClass="${jdbc.driverClass}" p:user="${jdbc.user}" p:password="${jdbc.password}"/>
+
 </beans>

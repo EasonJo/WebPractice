@@ -2,7 +2,6 @@ package cn.itheima.web.action;
 
 import cn.itheima.domain.Customer;
 import cn.itheima.service.CustomerService;
-import cn.itheima.service.impl.CustomerServiceImpl;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
@@ -10,14 +9,21 @@ import org.apache.commons.lang3.StringUtils;
 import org.apache.struts2.ServletActionContext;
 import org.hibernate.criterion.DetachedCriteria;
 import org.hibernate.criterion.Restrictions;
+import org.springframework.web.context.support.WebApplicationContextUtils;
 
 import java.util.List;
 
+/**
+ * @author Eason
+ */
 public class CustomerAction extends ActionSupport implements ModelDriven<Customer> {
-    private CustomerService cs = new CustomerServiceImpl();
     private Customer customer = new Customer();
 
     public String list() throws Exception {
+
+        CustomerService cs = (CustomerService) WebApplicationContextUtils.getWebApplicationContext(ServletActionContext
+            .getServletContext()).getBean("customerService");
+
         //1 接受参数
         String cust_name = ServletActionContext.getRequest().getParameter("cust_name");
         //2 创建离线查询对象
@@ -38,15 +44,17 @@ public class CustomerAction extends ActionSupport implements ModelDriven<Custome
         return "list";
     }
 
-
-    //添加客户
+    /**
+     * 添加客户
+     */
     public String add() throws Exception {
+        CustomerService cs = (CustomerService) WebApplicationContextUtils.getWebApplicationContext(ServletActionContext
+            .getServletContext()).getBean("customerService");
         //1 调用Service
         cs.save(customer);
         //2 重定向到列表action方法
         return "toList";
     }
-
 
     @Override
     public Customer getModel() {
