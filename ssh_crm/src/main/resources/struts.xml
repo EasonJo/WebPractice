@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?><!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+    "http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+    <!-- 请求参数的编码方式 -->
+    <constant name="struts.i18n.encoding" value="UTF-8" />
+    <!-- 指定被struts2处理的请求后缀类型。多个用逗号隔开 -->
+    <!--<constant name="struts.action.extension" value="action,do,htm" />-->
+    <!-- 当struts.xml改动后，是否重新加载。默认值为false(生产环境下使用),开发阶段最好打开  -->
+    <constant name="struts.configuration.xml.reload" value="true" />
+    <!-- 是否使用struts的开发模式。开发模式会有更多的调试信息。默认值为false(生产环境下使用),开发阶段最好打开  -->
+    <constant name="struts.devMode" value="true" />
+    <!-- 设置浏览器是否缓存静态内容。默认值为true(生产环境下使用),开发阶段最好关闭  -->
+    <constant name="struts.serve.static.browserCache" value="false" />
+    <!-- 指定由spring负责action对象的创建 -->
+    <constant name="struts.objectFactory" value="spring" />
+
+    <!-- 是否开启动态方法调用 -->
+    <!--<constant name="struts.enable.DynamicMethodInvocation" value="false" />-->
+
+    <package name="crm" namespace="/" extends="struts-default">
+
+        <global-exception-mappings>
+            <exception-mapping exception="java.lang.RuntimeException" result="error" />
+        </global-exception-mappings>
+
+        <!-- 整个方案1: class 属性使用 Action 的完整类名,Struts2 仍然创建 Action, 由 Spring 负责组装 Action 中的属性-->
+        <!--这种方案在与Spring 集成中并不推荐使用-->
+        <!--<action name="user_*" class="cn.eason.ssh.web.action.UserAction" method="{1}">
+            <result name="success">/success.jsp</result>
+            &lt;!&ndash;Struts2 低版本不需要此行&ndash;&gt;
+            <allowed-methods>login</allowed-methods>
+        </action>-->
+
+        <!--方案2: 直接使用Spring创建的Action实例,这种方式在 UserAction 中需要手动组装依赖属性-->
+        <action name="UserAction_*" class="userAction" method="{1}">
+            <result name="toHome" type="redirect">/index.htm</result>
+            <result name="error">/login.jsp</result>
+            <allowed-methods>login</allowed-methods>
+        </action>
+
+    </package>
+</struts>

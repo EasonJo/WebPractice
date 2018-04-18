@@ -1,0 +1,76 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:context="http://www.springframework.org/schema/context" xmlns:p="http://www.springframework.org/schema/p"
+    xmlns:tx="http://www.springframework.org/schema/tx" xsi:schemaLocation="http://www.springframework.org/schema/beans
+			http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd"
+    default-lazy-init="false">
+
+    <context:property-placeholder location="classpath:db.properties" />
+
+    <context:component-scan base-package="cn.eason.ssh" />
+    <context:component-scan base-package="cn.eason.service" />
+    <context:component-scan base-package="cn.eason.dao" />
+
+    <!--<bean class="cn.eason.ssh.web.action.UserAction" name="userAction"/>-->
+
+
+    <!--注入 Hibernate 的 SessionFactory，有两种方案-->
+    <!--1. 使用 Hibernate.cfg.xml-->
+    <!--<bean name="sessionFactory" class="org.springframework.orm.hibernate5.LocalSessionFactoryBean"
+        p:configLocation="classpath:hibernate.cfg.xml.bak" />-->
+
+    <!--1. 方案2,直接使用 Spring 来配置 Hibernate 的sessionFactory-->
+    <!--<bean name="sessionFactory" class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">
+        &lt;!&ndash;配置 Hibernate 基本信息&ndash;&gt;
+        <property name="hibernateProperties">
+            <props>
+                &lt;!&ndash;  必选配置 &ndash;&gt;
+                <prop key="hibernate.connection.driver_class">com.mysql.jdbc.Driver</prop>
+                <prop key="hibernate.connection.url">jdbc:mysql:///hibernate</prop>
+                <prop key="hibernate.connection.username">pujl</prop>
+                <prop key="hibernate.connection.password">102107</prop>
+                <prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
+
+                &lt;!&ndash;  可选配置 &ndash;&gt;
+                <prop key="hibernate.show_sql">true</prop>
+                <prop key="hibernate.format_sql">true</prop>
+                <prop key="hibernate.hbm2ddl.auto">update</prop>
+            </props>
+        </property>
+
+        <property name="mappingDirectoryLocations" value="classpath:cn/eason/domain" />
+    </bean>-->
+
+
+    <!-- 使用外部的数据库连接池-->
+    <bean name="sessionFactory" class="org.springframework.orm.hibernate5.LocalSessionFactoryBean"
+        p:dataSource-ref="datasource">
+        <property name="hibernateProperties">
+            <props>
+                <!--数据库方言-->
+                <prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
+
+                <!--显示 sql-->
+                <prop key="hibernate.show_sql">true</prop>
+                <!--格式化 sql-->
+                <prop key="hibernate.format_sql">true</prop>
+                <!--创建表的规则-->
+                <prop key="hibernate.hbm2ddl.auto">update</prop>
+            </props>
+
+        </property>
+        <property name="mappingDirectoryLocations" value="classpath:cn/eason/domain" />
+    </bean>
+
+    <!--使用 properties 文件的方式配置数据库信息-->
+    <context:property-placeholder file-encoding="UTF-8" location="classpath:db.properties" />
+    <!--使用 c3p0 数据库连接池 -->
+    <bean name="datasource" class="com.mchange.v2.c3p0.ComboPooledDataSource" p:jdbcUrl="${jdbc.jdbcUrl}"
+        p:driverClass="${jdbc.driverClass}" p:user="${jdbc.user}" p:password="${jdbc.password}" />
+
+
+    <!--事务核心管理器,封装了所有的事务操作,依赖于连接池-->
+    <bean name="transactionManager" class="org.springframework.orm.hibernate5.HibernateTransactionManager"
+        p:sessionFactory-ref="sessionFactory" />
+    <tx:annotation-driven />
+</beans>
