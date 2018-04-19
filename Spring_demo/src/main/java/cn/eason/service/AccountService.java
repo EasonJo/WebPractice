@@ -5,4 +5,5 @@ package cn.eason.service;
  * @date Create in 14:29 17/04/2018
  */
 public interface AccountService {
+    void transfer(Integer from, Integer to, Double money);
 }

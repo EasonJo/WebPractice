@@ -2,20 +2,30 @@
     PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
     "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
+    <properties resource="db.properties" />
+    <!--别名-->
+    <typeAliases>
+        <package name="cn.eason.domain" />
+    </typeAliases>
     <environments default="dev">
         <environment id="dev">
             <transactionManager type="JDBC" />
             <dataSource type="POOLED">
-                <property name="driver" value="com.mysql.jdbc.Driver" />
-                <property name="url" value="jdbc:mysql:///mybatis" />
-                <property name="username" value="pujl" />
-                <property name="password" value="102107" />
+                <property name="driver" value="${jdbc.driverClass}" />
+                <property name="url" value="${jdbc.jdbcUrl}" />
+                <property name="username" value="${jdbc.user}" />
+                <property name="password" value="${jdbc.password}" />
             </dataSource>
         </environment>
     </environments>
 
     <mappers>
-        <mapper resource="cn/eason/sqlmap/User.xml"/>
+        <!--<mapper resource="cn/eason/dao/UserDao.xml" />-->
+        <!--这种方式要求接口名称和 xml 文件名称一样,并且必须在同一个目录下-->
+        <!--<mapper class="cn.eason.dao.UserDao" />-->
+
+        <!--直接扫描包-->
+        <package name="cn.eason.dao" />
     </mappers>
 
 </configuration>

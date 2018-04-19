@@ -23,12 +23,20 @@
             <artifactId>mysql-connector-java</artifactId>
             <version>6.0.6</version>
         </dependency>
+
+        <!--mybatis-->
         <dependency>
             <groupId>org.mybatis</groupId>
             <artifactId>mybatis</artifactId>
             <version>3.4.6</version>
         </dependency>
 
+        <!--log4j-->
+        <dependency>
+            <groupId>log4j</groupId>
+            <artifactId>log4j</artifactId>
+            <version>RELEASE</version>
+        </dependency>
     </dependencies>
 
 </project>

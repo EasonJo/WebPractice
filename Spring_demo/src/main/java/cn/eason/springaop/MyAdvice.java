@@ -29,7 +29,7 @@ public class MyAdvice {
 //		|-在目标方法运行之后调用
 //----------------------------------------------------------------
 
-    @Pointcut("execution(* cn.eason.service.impl.*ServiceImpl.*(..)))")
+    @Pointcut("execution(* cn.eason.service.impl.LoginServiceImpl.*(..)))")
     public void pc() {
     }
 
