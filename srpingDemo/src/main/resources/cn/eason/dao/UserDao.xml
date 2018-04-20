@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.eason.dao.UserDao">
+    <select id="findUserById" parameterType="Integer" resultType="User">
+        SELECT *
+        FROM user
+        WHERE id = #{value}
+    </select>
+
+    <!-- //根据用户名称模糊查询用户列表
+	#{}    select * from user where id = ？    占位符  ? ==  '五'
+	${}    select * from user where username like '%五%'  字符串拼接
+	 -->
+    <select id="findUserByUserName" parameterType="String" resultType="User">
+        SELECT *
+        FROM user
+        WHERE username LIKE '%${value}%'
+    </select>
+
+
+    <select id="findUserByQueryVo" resultType="User" parameterType="QueryVo">
+        SELECT *
+        FROM user
+        WHERE username LIKE '%${user.username}%'
+
+    </select>
+
+    <select id="countUser" resultType="Integer">
+        SELECT count(1)
+        FROM user
+    </select>
+
+    <!--where 标签可以去掉第一个前置and 关键字-->
+    <select id="selectUserBySexAndUserName" resultType="user" parameterType="user">
+        SELECT *
+        FROM user
+        <where>
+            <if test="sex != null and sex !=''">
+                sex = #{sex}
+            </if>
+            <if test="username !=null and username !=''">
+                AND username = #{username}
+            </if>
+        </where>
+    </select>
+
+
+    <!-- 多个ID (1,2,3)-->
+    <!--select * from user where id in (1,2,3)-->
+    <select id="selectUserByIds" resultType="user" parameterType="queryVo">
+
+        SELECT * FROM user
+        <where>
+            <foreach collection="ids" item="id" separator="," open="id in (" close=")">
+                #{id}
+            </foreach>
+        </where>
+    </select>
+
+    <resultMap id="users" type="User">
+        <id property="id" column="uid" />
+        <result property="username" column="username" />
+        <result property="sex" column="sex" />
+        <result property="address" column="address" />
+        <result property="birthday" column="birthday" />
+        <collection property="orders" ofType="orders">
+            <id property="id" column="id" />
+            <result property="userId" column="user_id" />
+            <result property="createtime" column="createtime" />
+            <result property="note" column="note" />
+            <result property="number" column="number" />
+        </collection>
+    </resultMap>
+    <select id="getAllUsers" resultMap="users">
+        SELECT
+            o.id,
+            o.user_id,
+            o.number,
+            o.createtime,
+            u.id AS uid,
+            u.username,
+            u.sex,
+            u.birthday,
+            u.address
+        FROM user u
+            LEFT JOIN orders o
+                ON o.user_id = u.id
+    </select>
+
+    <!--插入一条数据,然后返回这条数据的主键-->
+    <insert id="insertUser" parameterType="User">
+        <selectKey keyProperty="id" resultType="Integer" order="AFTER">
+            SELECT LAST_INSERT_ID()
+        </selectKey>
+        INSERT INTO user (username, birthday, sex, address) VALUES (#{username}, #{birthday}, #{sex}, #{address})
+    </insert>
+
+    <update id="updateUserById" parameterType="User">
+        UPDATE user
+        SET username = #{username}, birthday = #{birthday}, sex = #{sex}, address = #{address}
+        WHERE id = #{id}
+    </update>
+
+    <delete id="deleteUserById" parameterType="Integer">
+        DELETE FROM user
+        WHERE id = #{value}
+    </delete>
+
+</mapper>
