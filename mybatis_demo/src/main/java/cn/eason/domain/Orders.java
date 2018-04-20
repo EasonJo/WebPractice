@@ -19,6 +19,8 @@ public class Orders  implements Serializable{
 
     private String note;
 
+    private User user;
+
     public Integer getId() {
         return id;
     }
@@ -59,6 +61,23 @@ public class Orders  implements Serializable{
         this.note = note == null ? null : note.trim();
     }
 
-    
-    
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    @Override
+    public String toString() {
+        return "Orders{" +
+            "id=" + id +
+            ", userId=" + userId +
+            ", number='" + number + '\'' +
+            ", createtime=" + createtime +
+            ", note='" + note + '\'' +
+            ", user=" + user +
+            '}';
+    }
 }

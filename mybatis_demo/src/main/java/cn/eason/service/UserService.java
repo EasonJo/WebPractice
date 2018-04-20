@@ -1,3 +1,5 @@
+package cn.eason.service;
+
 import cn.eason.domain.User;
 
 import java.util.List;

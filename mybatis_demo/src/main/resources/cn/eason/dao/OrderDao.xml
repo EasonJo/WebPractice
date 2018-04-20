@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" ?><!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.eason.dao.OrderDao">
+    <select id="getOrders" resultType="orders">
+        SELECT *
+        FROM orders
+    </select>
+
+
+    <resultMap id="order" type="Orders">
+        <id column="id" property="id" />
+        <result column="number" property="number" />
+        <result property="createtime" column="createtime" />
+        <result property="userId" column="user_id" />
+        <association property="user" javaType="user">
+            <id column="user_id" property="id" />
+            <result property="username" column="username" />
+        </association>
+    </resultMap>
+    <select id="getCompleteOrders" resultMap="order">
+        SELECT
+            o.id,
+            o.user_id,
+            o.number,
+            o.createtime,
+            u.username
+        FROM orders o
+            LEFT JOIN user u
+                ON o.user_id = u.id
+    </select>
+
+
+    <resultMap id="users" type="User">
+        <id property="id" column="uid" />
+        <result property="username" column="username" />
+        <result property="sex" column="sex" />
+        <result property="address" column="address" />
+        <result property="birthday" column="birthday" />
+        <collection property="orders" ofType="orders">
+            <id property="id" column="id" />
+            <result property="userId" column="user_id"/>
+            <result property="createtime" column="createtime"/>
+            <result property="note" column="note"/>
+            <result property="number" column="number"/>
+        </collection>
+    </resultMap>
+    <select id="getAllUsers" resultMap="users">
+        SELECT
+            o.id,
+            o.user_id,
+            o.number,
+            o.createtime,
+            u.id as uid,
+            u.username,
+            u.sex,
+            u.birthday,
+            u.address
+        FROM user u
+            LEFT JOIN orders o
+                ON o.user_id = u.id
+
+    </select>
+</mapper>

@@ -15,7 +15,7 @@ import java.util.List;
  */
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration("classpath:applicationContext.xml")
-public class UserService {
+public class UserServiceTest {
 
     @Resource(name = "userService")
     private UserService userService;
@@ -25,7 +25,6 @@ public class UserService {
         List<User> users = userService.getAllUsers();
         for (User u : users) {
             System.out.println(u);
-
         }
     }
 }
