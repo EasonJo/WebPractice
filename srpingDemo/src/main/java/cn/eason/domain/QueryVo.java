@@ -10,11 +10,10 @@ import java.util.List;
  * @date Create in 10:16 19/04/2018
  */
 public class QueryVo implements Serializable {
-    private User user;
-
     public List<Integer> idsList;
     public Integer[] ids;
-
+    public List<Items> itemsList;
+    private User user;
 
     public Integer[] getIds() {
         return ids;
@@ -32,11 +31,19 @@ public class QueryVo implements Serializable {
         this.idsList = idsList;
     }
 
+    public User getUser() {
+        return user;
+    }
+
     public void setUser(User user) {
         this.user = user;
     }
 
-    public User getUser() {
-        return user;
+    public List<Items> getItemsList() {
+        return itemsList;
+    }
+
+    public void setItemsList(List<Items> itemsList) {
+        this.itemsList = itemsList;
     }
 }

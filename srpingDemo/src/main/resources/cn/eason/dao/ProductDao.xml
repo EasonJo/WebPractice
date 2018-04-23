@@ -12,12 +12,9 @@
         WHERE id = #{value}
     </select>
     <select id="updateItems" parameterType="items">
-        UPDATE items
-        SET name = #{name},
-        <if test="createtime!= null">
-            createtime = #{createtime},
-        </if>
-        detail = #{detail}, pic = #{pic}, price = #{price}
+        <if test="createtime!= null"> createtime = #{createtime},
+
+        detail = #{</if>detail}, pic = #{pic}, price = #{price}
         WHERE id = #{id}
     </select>
 </mapper>

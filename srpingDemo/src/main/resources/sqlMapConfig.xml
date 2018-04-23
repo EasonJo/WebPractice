@@ -6,13 +6,4 @@
     <typeAliases>
         <package name="cn.eason.domain" />
     </typeAliases>
-
-    <!--<mappers>
-        &lt;!&ndash;<mapper resource="cn/eason/dao/UserDao.xml" />
-        这种方式要求接口名称和 xml 文件名称一样,并且必须在同一个目录下
-        <mapper class="cn.eason.dao.UserDao" />
-
-        直接扫描包&ndash;&gt;
-        <package name="cn.eason.dao" />
-    </mappers>-->
 </configuration>

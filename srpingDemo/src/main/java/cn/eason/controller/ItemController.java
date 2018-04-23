@@ -1,6 +1,7 @@
 package cn.eason.controller;
 
 import cn.eason.domain.Items;
+import cn.eason.domain.QueryVo;
 import cn.eason.service.ProductService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -42,8 +43,22 @@ public class ItemController {
 
     @RequestMapping("/updateitem.action")
     public String updateItems(Items items, Model model) {
-        System.out.println(items);
         productService.updateItems(items);
+        return "success";
+    }
+
+    @RequestMapping("/deletes.action")
+    public String deleteMore(QueryVo vo) {
+        return "success";
+    }
+
+    @RequestMapping("/updates.action")
+    public String updates(QueryVo vo) {
+
+        for (Items items1 : vo.getItemsList()) {
+            System.out.println(items1);
+
+        }
         return "success";
     }
 

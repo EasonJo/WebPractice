@@ -11,15 +11,34 @@
     <!--注解驱动-->
     <mvc:annotation-driven conversion-service="formattingConversionService" />
 
+    <!-- 配置Conveter转换器  转换工厂 （日期、去掉前后空格) -->
     <bean class="org.springframework.format.support.FormattingConversionServiceFactoryBean"
         name="formattingConversionService">
         <property name="converters">
             <list>
-                <bean class="cn.eason.conversion.DateConversion"/>
+                <bean class="cn.eason.conversion.DateConversion" />
             </list>
         </property>
     </bean>
 
     <!--视图解析器-->
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver" p:suffix=".jsp" />
+
+    <!--文件上传解析器-->
+    <bean class="org.springframework.web.multipart.commons.CommonsMultipartResolver" name="multipartResolver">
+        <property name="maxUploadSize" value="5000000" />
+    </bean>
+
+    <!--全局异常-->
+    <bean class="cn.eason.exception.CustomExceptionResolver" />
+
+    <!--拦截器-->
+    <mvc:interceptors>
+        <!--登录拦截器-->
+        <mvc:interceptor>
+            <mvc:mapping path="/**" />
+            <bean class="cn.eason.interceptor.LoginInterceptor" />
+        </mvc:interceptor>
+    </mvc:interceptors>
+
 </beans>

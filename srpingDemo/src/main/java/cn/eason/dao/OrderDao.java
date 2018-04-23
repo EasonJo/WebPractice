@@ -14,12 +14,14 @@ public interface OrderDao {
 
     /**
      * 获取完整的订单,其中包含了用户信息
+     *
      * @return
      */
     List<Orders> getCompleteOrders();
 
     /**
      * 获取所有的用户信息,其中包含了用户关联的订单信息
+     *
      * @return
      */
     List<User> getAllUsers();
