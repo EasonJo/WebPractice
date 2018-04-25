@@ -15,7 +15,7 @@ import java.util.List;
  * @author Eason
  * @date Create in 16:48 24/04/2018
  */
-@Service
+@Service("itemCatService")
 public class ItemCatServiceImpl implements ItemCatService {
 
     @Resource(name = "tbItemCatMapper")

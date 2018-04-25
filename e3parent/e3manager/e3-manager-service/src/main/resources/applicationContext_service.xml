@@ -7,7 +7,7 @@
 			 http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd http://code.alibabatech.com/schema/dubbo http://code.alibabatech.com/schema/dubbo/dubbo.xsd"
     default-lazy-init="false">
 
-    <context:component-scan base-package="cn.e3mall.service" />
+    <context:component-scan base-package="cn.e3mall.service.impl" />
 
     <!--配置事务-->
     <!-- 事务管理器 -->
@@ -23,6 +23,6 @@
     <!--用 dubbo 协议在端口发布服务-->
     <dubbo:protocol name="dubbo" port="20880" />
     <!--声明需要暴露的服务接口-->
-    <dubbo:service interface="cn.e3mall.service.ItemService" ref="itemServiceImpl" />
-    <dubbo:service interface="cn.e3mall.service.ItemCatService" ref="itemCatServiceImpl" />
+    <dubbo:service interface="cn.e3mall.service.ItemService" ref="itemService" />
+    <dubbo:service interface="cn.e3mall.service.ItemCatService" ref="itemCatService" />
 </beans>

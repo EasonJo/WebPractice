@@ -9,8 +9,10 @@
     default-autowire="byName">
 
     <context:component-scan base-package="cn.e3mall.controller" />
-    <!--&lt;!&ndash;注解驱动&ndash;&gt;-->
+    <!-- 注解驱动 -->
     <mvc:annotation-driven />
+
+    <context:property-placeholder location="classpath:conf/resource.properties"/>
 
     <!-- 配置Conveter转换器  转换工厂 （日期、去掉前后空格)
     <bean class="org.springframework.format.support.FormattingConversionServiceFactoryBean"
@@ -25,14 +27,14 @@
     <!--视图解析器-->
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver" p:suffix=".jsp" />
 
-    <!--资源映射-->
+    <!--静态资源映射-->
     <mvc:resources mapping="/css/**" location="/css/" />
     <mvc:resources mapping="/js/**" location="/js/" />
 
     <!--文件上传解析器-->
-    <!--<bean class="org.springframework.web.multipart.commons.CommonsMultipartResolver" name="multipartResolver">
+    <bean class="org.springframework.web.multipart.commons.CommonsMultipartResolver" name="multipartResolver">
         <property name="maxUploadSize" value="5000000" />
-    </bean>-->
+    </bean>
 
 
     <!--  &lt;!&ndash;拦截器&ndash;&gt;
@@ -53,5 +55,6 @@
     <!--使用的服务名称,会从服务中心找 Id 对应的服务-->
     <dubbo:reference interface="cn.e3mall.service.ItemService" id="itemService" />
     <dubbo:reference interface="cn.e3mall.service.ItemCatService" id="itemCatService" />
+    <dubbo:reference interface="cn.e3mall.content.service.ContentCategoryService" id="contentCategoryService"/>
 
 </beans>

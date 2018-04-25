@@ -73,13 +73,6 @@
             <artifactId>spring-context-support</artifactId>
         </dependency>
 
-        <!-- Jackson Json处理工具包 -->
-        <dependency>
-            <groupId>com.fasterxml.jackson.core</groupId>
-            <artifactId>jackson-databind</artifactId>
-        </dependency>
-
-
         <!-- dubbo相关 -->
         <dependency>
             <groupId>com.alibaba</groupId>

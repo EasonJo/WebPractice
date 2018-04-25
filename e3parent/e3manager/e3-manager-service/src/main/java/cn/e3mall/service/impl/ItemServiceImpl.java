@@ -1,8 +1,12 @@
 package cn.e3mall.service.impl;
 
 import cn.e3mall.common.pojo.EasyUIDataResult;
+import cn.e3mall.common.utils.E3Result;
+import cn.e3mall.common.utils.IDUtils;
+import cn.e3mall.mapper.TbItemDescMapper;
 import cn.e3mall.mapper.TbItemMapper;
 import cn.e3mall.pojo.TbItem;
+import cn.e3mall.pojo.TbItemDesc;
 import cn.e3mall.pojo.TbItemExample;
 import cn.e3mall.pojo.TbItemExample.Criteria;
 import cn.e3mall.service.ItemService;
@@ -11,6 +15,7 @@ import com.github.pagehelper.PageInfo;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -18,11 +23,14 @@ import java.util.List;
  *
  * @author Eason
  */
-@Service
+@Service("itemService")
 public class ItemServiceImpl implements ItemService {
 
     @Resource(name = "tbItemMapper")
     private TbItemMapper itemMapper;
+
+    @Resource(name = "tbItemDescMapper")
+    private TbItemDescMapper itemDescMapper;
 
     @Override
     public TbItem getItemById(long itemId) {
@@ -54,5 +62,27 @@ public class ItemServiceImpl implements ItemService {
         tbItemEasyUIDataResult.setRows(tbItemPageInfo.getList());
 
         return tbItemEasyUIDataResult;
+    }
+
+    @Override
+    public E3Result addItem(TbItem item, String desc) {
+        item.setId(IDUtils.genItemId());
+        //1 正常,2 下架,3 删除
+        item.setStatus((byte) 1);
+        Date date = new Date();
+
+        item.setCreated(date);
+        item.setUpdated(date);
+
+        itemMapper.insert(item);
+
+        TbItemDesc tbItemDesc = new TbItemDesc();
+        tbItemDesc.setItemId(item.getId());
+        tbItemDesc.setItemDesc(desc);
+        tbItemDesc.setCreated(date);
+        tbItemDesc.setUpdated(date);
+
+        itemDescMapper.insert(tbItemDesc);
+        return E3Result.ok();
     }
 }

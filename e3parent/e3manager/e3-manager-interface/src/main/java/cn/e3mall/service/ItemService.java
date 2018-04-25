@@ -1,6 +1,7 @@
 package cn.e3mall.service;
 
 import cn.e3mall.common.pojo.EasyUIDataResult;
+import cn.e3mall.common.utils.E3Result;
 import cn.e3mall.pojo.TbItem;
 
 /**
@@ -24,4 +25,12 @@ public interface ItemService {
      * @return {@link EasyUIDataResult}
      */
     EasyUIDataResult<TbItem> getItemList(int page, int size);
+
+    /**
+     * 插入商品信息
+     * @param item {@link TbItem}
+     * @param desc 商品描述
+     * @return 插入的商品
+     */
+    E3Result addItem(TbItem item,String desc);
 }
