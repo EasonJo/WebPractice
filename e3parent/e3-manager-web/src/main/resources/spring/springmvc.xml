@@ -37,9 +37,9 @@
     </bean>
 
 
-    <!--  &lt;!&ndash;拦截器&ndash;&gt;
+    <!--  拦截器
       <mvc:interceptors>
-          &lt;!&ndash;登录拦截器&ndash;&gt;
+           登录拦截器
           <mvc:interceptor>
               <mvc:mapping path="/**" />
               <bean class="cn.eason.interceptor.LoginInterceptor" />
@@ -56,5 +56,6 @@
     <dubbo:reference interface="cn.e3mall.service.ItemService" id="itemService" />
     <dubbo:reference interface="cn.e3mall.service.ItemCatService" id="itemCatService" />
     <dubbo:reference interface="cn.e3mall.content.service.ContentCategoryService" id="contentCategoryService"/>
+    <dubbo:reference interface="cn.e3mall.content.service.ContentService" id="contentService"/>
 
 </beans>
