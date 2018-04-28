@@ -12,12 +12,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import javax.annotation.Resource;
 
 /**
- * 商品详情页面展示
+ * 商品详情页面展示Controller
+ * <p>Title: ItemController</p>
+ * <p>Description: </p>
+ * <p>Company: www.itcast.cn</p>
  *
- * @author Eason
- * @date Create in 14:44 28/04/2018
+ * @version 1.0
  */
-
 @Controller
 public class ItemController {
 
@@ -26,15 +27,16 @@ public class ItemController {
 
 
     @RequestMapping("/item/{itemId}")
-    public String showItemInfo(@PathVariable long itemId, Model model) {
-
+    public String showItemInfo(@PathVariable Long itemId, Model model) {
+        //调用服务取商品基本信息
         TbItem tbItem = itemService.getItemById(itemId);
-
-        TbItemDesc tbItemDesc = itemService.getItemDescById(itemId);
-
-        model.addAttribute("item", new Item(tbItem));
-        model.addAttribute("itemDesc", tbItemDesc);
-
+        Item item = new Item(tbItem);
+        //取商品描述信息
+        TbItemDesc itemDesc = itemService.getItemDescById(itemId);
+        //把信息传递给页面
+        model.addAttribute("item", item);
+        model.addAttribute("itemDesc", itemDesc);
+        //返回逻辑视图
         return "item";
     }
 }

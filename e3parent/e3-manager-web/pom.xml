@@ -114,7 +114,6 @@
         <dependency>
             <groupId>org.apache.curator</groupId>
             <artifactId>curator-framework</artifactId>
-            <version>4.0.1</version>
         </dependency>
 
         <!-- 文件上传组件 -->

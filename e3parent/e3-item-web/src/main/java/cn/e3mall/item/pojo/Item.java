@@ -1,12 +1,7 @@
 package cn.e3mall.item.pojo;
 
 import cn.e3mall.pojo.TbItem;
-import org.apache.commons.lang3.StringUtils;
 
-/**
- * @author Eason
- * @date Create in 14:33 28/04/2018
- */
 public class Item extends TbItem {
 
     public Item(TbItem tbItem) {
@@ -24,11 +19,11 @@ public class Item extends TbItem {
     }
 
     public String[] getImages() {
-        String image = getImage();
-        if (StringUtils.isNotBlank(image)) {
-            return image.split(",");
+        String image2 = this.getImage();
+        if (image2 != null && !"".equals(image2)) {
+            String[] strings = image2.split(",");
+            return strings;
         }
         return null;
     }
-
 }
