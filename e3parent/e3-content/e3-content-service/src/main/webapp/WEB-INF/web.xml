@@ -11,8 +11,8 @@
     <context-param>
         <param-name>contextConfigLocation</param-name>
         <param-value>
-            classpath:applicationContext_mybatis.xml
             classpath:spring/applicationContext_service.xml
+            classpath:applicationContext_mybatis.xml
         </param-value>
     </context-param>
 

@@ -1,4 +1,4 @@
-package service;
+package cn.e3mall.service;
 
 import org.junit.Test;
 

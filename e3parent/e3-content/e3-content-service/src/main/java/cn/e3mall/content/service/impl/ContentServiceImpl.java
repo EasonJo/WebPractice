@@ -45,12 +45,16 @@ public class ContentServiceImpl implements ContentService {
 
     @Override
     public List<TbContent> getContentListByCid(long cid) {
-        //查询缓存
-        String json = jedisClient.hget(CONTENT_LIST, String.valueOf(cid));
-        //有缓存中直接响应结果
-        if (org.apache.commons.lang3.StringUtils.isNotBlank(json)) {
-            List<TbContent> tbContents = JsonUtils.jsonToList(json, TbContent.class);
-            return tbContents;
+        try {
+            //查询缓存
+            String json = jedisClient.hget(CONTENT_LIST, String.valueOf(cid));
+            //有缓存中直接响应结果
+            if (org.apache.commons.lang3.StringUtils.isNotBlank(json)) {
+                List<TbContent> tbContents = JsonUtils.jsonToList(json, TbContent.class);
+                return tbContents;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
         }
 
         //如果没有则查询数据库
@@ -60,7 +64,11 @@ public class ContentServiceImpl implements ContentService {
 
         List<TbContent> tbContents = tbContentMapper.selectByExampleWithBLOBs(example);
 
-        jedisClient.hset(CONTENT_LIST, String.valueOf(cid), JsonUtils.objectToJson(tbContents));
+        try {
+            jedisClient.hset(CONTENT_LIST, String.valueOf(cid), JsonUtils.objectToJson(tbContents));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
         return tbContents;
     }

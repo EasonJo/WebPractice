@@ -13,6 +13,9 @@
         <module>e3-manager-web</module>
         <module>e3-portal-web</module>
         <module>e3-content</module>
+        <module>e3-search</module>
+        <module>e3-search-web</module>
+        <module>e3-item-web</module>
     </modules>
 
     <properties>
@@ -41,9 +44,10 @@
         <dubbo.version>2.6.1</dubbo.version>
         <zookeeper.version>3.4.11</zookeeper.version>
         <zkclient.version>0.1</zkclient.version>
-        <activemq.version>5.11.2</activemq.version>
+        <activemq.version>5.15.3</activemq.version>
         <freemarker.version>2.3.23</freemarker.version>
         <quartz.version>2.2.2</quartz.version>
+        <curator-framework.version>4.0.1</curator-framework.version>
     </properties>
     <dependencyManagement>
         <dependencies>
@@ -239,6 +243,11 @@
                 <version>${freemarker.version}</version>
             </dependency>
 
+            <dependency>
+                <groupId>org.apache.curator</groupId>
+                <artifactId>curator-framework</artifactId>
+                <version>${curator-framework.version}</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 

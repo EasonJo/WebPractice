@@ -15,7 +15,8 @@ import java.util.List;
  * @date Create in 17:07 25/04/2018
  */
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration({"classpath:spring/applicationContext_service.xml","classpath:applicationContext_mybatis.xml"})
+@ContextConfiguration({"classpath:spring/applicationContext_service.xml", "classpath:applicationContext_mybatis.xml",
+    "classpath:spring/applicationContext_jedis.xml"})
 public class ContentCategoryServiceTest {
 
     @Resource(name = "contentCategoryService")

@@ -1,0 +1,267 @@
+
+
+[INFO ] 2018-04-28 16:47:51,255 method:org.springframework.web.servlet.FrameworkServlet.initServletBean(FrameworkServlet.java:494)
+FrameworkServlet 'e3-search-web': initialization started
+
+
+[INFO ] 2018-04-28 16:47:51,272 method:org.springframework.context.support.AbstractApplicationContext.prepareRefresh(AbstractApplicationContext.java:590)
+Refreshing WebApplicationContext for namespace 'e3-search-web-servlet': startup date [Sat Apr 28 16:47:51 CST 2018]; root of context hierarchy
+
+
+[INFO ] 2018-04-28 16:47:51,302 method:org.springframework.beans.factory.xml.XmlBeanDefinitionReader.loadBeanDefinitions(XmlBeanDefinitionReader.java:316)
+Loading XML bean definitions from class path resource [spring/springmvc.xml]
+
+
+[INFO ] 2018-04-28 16:47:51,558 method:
+using logger: com.alibaba.dubbo.common.logger.log4j.Log4jLoggerAdapter
+
+
+[INFO ] 2018-04-28 16:47:51,676 method:org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.<init>(AutowiredAnnotationBeanPostProcessor.java:154)
+JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+
+
+[WARN ] 2018-04-28 16:48:01,955 method:org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:558)
+Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'searchController': Injection of resource dependencies failed; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'searchService': FactoryBean threw exception on object creation; nested exception is java.lang.NoClassDefFoundError: org/apache/curator/RetryPolicy
+
+
+[ERROR] 2018-04-28 16:48:01,960 method:org.springframework.web.servlet.FrameworkServlet.initServletBean(FrameworkServlet.java:503)
+Context initialization failed
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'searchController': Injection of resource dependencies failed; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'searchService': FactoryBean threw exception on object creation; nested exception is java.lang.NoClassDefFoundError: org/apache/curator/RetryPolicy
+	at org.springframework.context.annotation.CommonAnnotationBeanPostProcessor.postProcessPropertyValues(CommonAnnotationBeanPostProcessor.java:321)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1344)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:578)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:501)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:317)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:228)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:315)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:199)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:760)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:869)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:550)
+	at org.springframework.web.servlet.FrameworkServlet.configureAndRefreshWebApplicationContext(FrameworkServlet.java:672)
+	at org.springframework.web.servlet.FrameworkServlet.createWebApplicationContext(FrameworkServlet.java:638)
+	at org.springframework.web.servlet.FrameworkServlet.createWebApplicationContext(FrameworkServlet.java:686)
+	at org.springframework.web.servlet.FrameworkServlet.initWebApplicationContext(FrameworkServlet.java:554)
+	at org.springframework.web.servlet.FrameworkServlet.initServletBean(FrameworkServlet.java:499)
+	at org.springframework.web.servlet.HttpServletBean.init(HttpServletBean.java:172)
+	at javax.servlet.GenericServlet.init(GenericServlet.java:160)
+	at org.apache.catalina.core.StandardWrapper.initServlet(StandardWrapper.java:1280)
+	at org.apache.catalina.core.StandardWrapper.loadServlet(StandardWrapper.java:1193)
+	at org.apache.catalina.core.StandardWrapper.load(StandardWrapper.java:1088)
+	at org.apache.catalina.core.StandardContext.loadOnStartup(StandardContext.java:5176)
+	at org.apache.catalina.core.StandardContext.startInternal(StandardContext.java:5460)
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:150)
+	at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1559)
+	at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1549)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'searchService': FactoryBean threw exception on object creation; nested exception is java.lang.NoClassDefFoundError: org/apache/curator/RetryPolicy
+	at org.springframework.beans.factory.support.FactoryBeanRegistrySupport.doGetObjectFromFactoryBean(FactoryBeanRegistrySupport.java:170)
+	at org.springframework.beans.factory.support.FactoryBeanRegistrySupport.getObjectFromFactoryBean(FactoryBeanRegistrySupport.java:101)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getObjectForBeanInstance(AbstractBeanFactory.java:1645)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.getObjectForBeanInstance(AbstractAutowireCapableBeanFactory.java:1178)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:327)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:204)
+	at org.springframework.context.annotation.CommonAnnotationBeanPostProcessor.autowireResource(CommonAnnotationBeanPostProcessor.java:513)
+	at org.springframework.context.annotation.CommonAnnotationBeanPostProcessor.getResource(CommonAnnotationBeanPostProcessor.java:484)
+	at org.springframework.context.annotation.CommonAnnotationBeanPostProcessor$ResourceElement.getResourceToInject(CommonAnnotationBeanPostProcessor.java:618)
+	at org.springframework.beans.factory.annotation.InjectionMetadata$InjectedElement.inject(InjectionMetadata.java:177)
+	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:91)
+	at org.springframework.context.annotation.CommonAnnotationBeanPostProcessor.postProcessPropertyValues(CommonAnnotationBeanPostProcessor.java:318)
+	... 29 more
+Caused by: java.lang.NoClassDefFoundError: org/apache/curator/RetryPolicy
+	at com.alibaba.dubbo.remoting.zookeeper.curator.CuratorZookeeperTransporter.connect(CuratorZookeeperTransporter.java:26)
+	at com.alibaba.dubbo.remoting.zookeeper.ZookeeperTransporter$Adaptive.connect(ZookeeperTransporter$Adaptive.java)
+	at com.alibaba.dubbo.registry.zookeeper.ZookeeperRegistry.<init>(ZookeeperRegistry.java:69)
+	at com.alibaba.dubbo.registry.zookeeper.ZookeeperRegistryFactory.createRegistry(ZookeeperRegistryFactory.java:37)
+	at com.alibaba.dubbo.registry.support.AbstractRegistryFactory.getRegistry(AbstractRegistryFactory.java:95)
+	at com.alibaba.dubbo.registry.RegistryFactory$Adaptive.getRegistry(RegistryFactory$Adaptive.java)
+	at com.alibaba.dubbo.registry.integration.RegistryProtocol.refer(RegistryProtocol.java:269)
+	at com.alibaba.dubbo.rpc.protocol.ProtocolFilterWrapper.refer(ProtocolFilterWrapper.java:98)
+	at com.alibaba.dubbo.rpc.protocol.ProtocolListenerWrapper.refer(ProtocolListenerWrapper.java:63)
+	at com.alibaba.dubbo.qos.protocol.QosProtocolWrapper.refer(QosProtocolWrapper.java:63)
+	at com.alibaba.dubbo.rpc.Protocol$Adaptive.refer(Protocol$Adaptive.java)
+	at com.alibaba.dubbo.config.ReferenceConfig.createProxy(ReferenceConfig.java:394)
+	at com.alibaba.dubbo.config.ReferenceConfig.init(ReferenceConfig.java:333)
+	at com.alibaba.dubbo.config.ReferenceConfig.get(ReferenceConfig.java:163)
+	at com.alibaba.dubbo.config.spring.ReferenceBean.getObject(ReferenceBean.java:65)
+	at org.springframework.beans.factory.support.FactoryBeanRegistrySupport.doGetObjectFromFactoryBean(FactoryBeanRegistrySupport.java:163)
+	... 40 more
+Caused by: java.lang.ClassNotFoundException: org.apache.curator.RetryPolicy
+	at org.apache.catalina.loader.WebappClassLoader.loadClass(WebappClassLoader.java:1702)
+	at org.apache.catalina.loader.WebappClassLoader.loadClass(WebappClassLoader.java:1547)
+	... 56 more
+
+
+[INFO ] 2018-04-28 17:05:13,858 method:org.springframework.web.servlet.FrameworkServlet.initServletBean(FrameworkServlet.java:494)
+FrameworkServlet 'e3-search-web': initialization started
+
+
+[INFO ] 2018-04-28 17:05:13,878 method:org.springframework.context.support.AbstractApplicationContext.prepareRefresh(AbstractApplicationContext.java:590)
+Refreshing WebApplicationContext for namespace 'e3-search-web-servlet': startup date [Sat Apr 28 17:05:13 CST 2018]; root of context hierarchy
+
+
+[INFO ] 2018-04-28 17:05:13,907 method:org.springframework.beans.factory.xml.XmlBeanDefinitionReader.loadBeanDefinitions(XmlBeanDefinitionReader.java:316)
+Loading XML bean definitions from class path resource [spring/springmvc.xml]
+
+
+[INFO ] 2018-04-28 17:05:14,119 method:
+using logger: com.alibaba.dubbo.common.logger.log4j.Log4jLoggerAdapter
+
+
+[INFO ] 2018-04-28 17:05:14,242 method:org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.<init>(AutowiredAnnotationBeanPostProcessor.java:154)
+JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+
+
+[INFO ] 2018-04-28 17:05:29,568 method:org.apache.curator.utils.Compatibility.<clinit>(Compatibility.java:41)
+Running in ZooKeeper 3.4.x compatibility mode
+
+
+[INFO ] 2018-04-28 17:05:29,598 method:org.apache.curator.framework.imps.CuratorFrameworkImpl.start(CuratorFrameworkImpl.java:290)
+Starting
+
+
+[INFO ] 2018-04-28 17:05:34,611 method:org.apache.zookeeper.Environment.logEnv(Environment.java:100)
+Client environment:zookeeper.version=3.4.11-37e277162d567b55a07d1755f0b31c32e93c01a0, built on 11/01/2017 18:06 GMT
+
+
+[INFO ] 2018-04-28 17:05:34,611 method:org.apache.zookeeper.Environment.logEnv(Environment.java:100)
+Client environment:host.name=10.8.94.94
+
+
+[INFO ] 2018-04-28 17:05:34,612 method:org.apache.zookeeper.Environment.logEnv(Environment.java:100)
+Client environment:java.version=1.8.0_91
+
+
+[INFO ] 2018-04-28 17:05:34,612 method:org.apache.zookeeper.Environment.logEnv(Environment.java:100)
+Client environment:java.vendor=Oracle Corporation
+
+
+[INFO ] 2018-04-28 17:05:34,612 method:org.apache.zookeeper.Environment.logEnv(Environment.java:100)
+Client environment:java.home=/Library/Java/JavaVirtualMachines/jdk1.8.0_91.jdk/Contents/Home/jre
+
+
+[INFO ] 2018-04-28 17:05:34,613 method:org.apache.zookeeper.Environment.logEnv(Environment.java:100)
+Client environment:java.class.path=/Users/Eason/Web/maven/apache-maven-3.5.3/boot/plexus-classworlds-2.5.2.jar:/Applications/IntelliJ IDEA.app/Contents/lib/idea_rt.jar
+
+
+[INFO ] 2018-04-28 17:05:34,613 method:org.apache.zookeeper.Environment.logEnv(Environment.java:100)
+Client environment:java.library.path=/Users/Eason/Library/Java/Extensions:/Library/Java/Extensions:/Network/Library/Java/Extensions:/System/Library/Java/Extensions:/usr/lib/java:.
+
+
+[INFO ] 2018-04-28 17:05:34,613 method:org.apache.zookeeper.Environment.logEnv(Environment.java:100)
+Client environment:java.io.tmpdir=/var/folders/gl/w0hrpqks2_j7fc8078l9rp880000gn/T/
+
+
+[INFO ] 2018-04-28 17:05:34,614 method:org.apache.zookeeper.Environment.logEnv(Environment.java:100)
+Client environment:java.compiler=<NA>
+
+
+[INFO ] 2018-04-28 17:05:34,614 method:org.apache.zookeeper.Environment.logEnv(Environment.java:100)
+Client environment:os.name=Mac OS X
+
+
+[INFO ] 2018-04-28 17:05:34,615 method:org.apache.zookeeper.Environment.logEnv(Environment.java:100)
+Client environment:os.arch=x86_64
+
+
+[INFO ] 2018-04-28 17:05:34,616 method:org.apache.zookeeper.Environment.logEnv(Environment.java:100)
+Client environment:os.version=10.12.6
+
+
+[INFO ] 2018-04-28 17:05:34,616 method:org.apache.zookeeper.Environment.logEnv(Environment.java:100)
+Client environment:user.name=Eason
+
+
+[INFO ] 2018-04-28 17:05:34,616 method:org.apache.zookeeper.Environment.logEnv(Environment.java:100)
+Client environment:user.home=/Users/Eason
+
+
+[INFO ] 2018-04-28 17:05:34,616 method:org.apache.zookeeper.Environment.logEnv(Environment.java:100)
+Client environment:user.dir=/Users/Eason/Workspace/Web/e3parent/e3-search-web
+
+
+[INFO ] 2018-04-28 17:05:34,617 method:org.apache.zookeeper.ZooKeeper.<init>(ZooKeeper.java:441)
+Initiating client connection, connectString=localhost:2181 sessionTimeout=60000 watcher=org.apache.curator.ConnectionState@77d867f9
+
+
+[INFO ] 2018-04-28 17:05:34,637 method:org.apache.curator.framework.imps.CuratorFrameworkImpl.start(CuratorFrameworkImpl.java:332)
+Default schema
+
+
+[INFO ] 2018-04-28 17:05:34,637 method:org.apache.zookeeper.ClientCnxn$SendThread.logStartConnect(ClientCnxn.java:1035)
+Opening socket connection to server localhost/127.0.0.1:2181. Will not attempt to authenticate using SASL (unknown error)
+
+
+[INFO ] 2018-04-28 17:05:34,657 method:com.alibaba.dubbo.registry.support.AbstractRegistry.register(AbstractRegistry.java:269)
+ [DUBBO] Register: consumer://10.8.94.94/cn.e3mall.search.service.SearchService?application=e3-search-web&category=consumers&check=false&dubbo=2.6.1&interface=cn.e3mall.search.service.SearchService&methods=search&pid=7636&revision=1.0-SNAPSHOT&side=consumer&timestamp=1524906314443, dubbo version: 2.6.1, current host: 10.8.94.94
+
+
+[INFO ] 2018-04-28 17:05:34,657 method:org.apache.zookeeper.ClientCnxn$SendThread.primeConnection(ClientCnxn.java:877)
+Socket connection established to localhost/127.0.0.1:2181, initiating session
+
+
+[INFO ] 2018-04-28 17:05:34,670 method:org.apache.zookeeper.ClientCnxn$SendThread.onConnected(ClientCnxn.java:1302)
+Session establishment complete on server localhost/127.0.0.1:2181, sessionid = 0x162f61af3b6015f, negotiated timeout = 40000
+
+
+[INFO ] 2018-04-28 17:05:34,681 method:org.apache.curator.framework.state.ConnectionStateManager.postState(ConnectionStateManager.java:237)
+State change: CONNECTED
+
+
+[INFO ] 2018-04-28 17:05:34,701 method:com.alibaba.dubbo.registry.support.AbstractRegistry.subscribe(AbstractRegistry.java:292)
+ [DUBBO] Subscribe: consumer://10.8.94.94/cn.e3mall.search.service.SearchService?application=e3-search-web&category=providers,configurators,routers&dubbo=2.6.1&interface=cn.e3mall.search.service.SearchService&methods=search&pid=7636&revision=1.0-SNAPSHOT&side=consumer&timestamp=1524906314443, dubbo version: 2.6.1, current host: 10.8.94.94
+
+
+[INFO ] 2018-04-28 17:05:34,720 method:com.alibaba.dubbo.registry.support.AbstractRegistry.notify(AbstractRegistry.java:380)
+ [DUBBO] Notify urls for subscribe url consumer://10.8.94.94/cn.e3mall.search.service.SearchService?application=e3-search-web&category=providers,configurators,routers&dubbo=2.6.1&interface=cn.e3mall.search.service.SearchService&methods=search&pid=7636&revision=1.0-SNAPSHOT&side=consumer&timestamp=1524906314443, urls: [dubbo://10.8.94.94:20882/cn.e3mall.search.service.SearchService?anyhost=true&application=e3-search&dubbo=2.6.1&generic=false&interface=cn.e3mall.search.service.SearchService&methods=search&pid=7545&side=provider&timeout=600000&timestamp=1524906196053, empty://10.8.94.94/cn.e3mall.search.service.SearchService?application=e3-search-web&category=configurators&dubbo=2.6.1&interface=cn.e3mall.search.service.SearchService&methods=search&pid=7636&revision=1.0-SNAPSHOT&side=consumer&timestamp=1524906314443, empty://10.8.94.94/cn.e3mall.search.service.SearchService?application=e3-search-web&category=routers&dubbo=2.6.1&interface=cn.e3mall.search.service.SearchService&methods=search&pid=7636&revision=1.0-SNAPSHOT&side=consumer&timestamp=1524906314443], dubbo version: 2.6.1, current host: 10.8.94.94
+
+
+[INFO ] 2018-04-28 17:05:34,829 method:com.alibaba.dubbo.remoting.transport.AbstractClient.connect(AbstractClient.java:273)
+ [DUBBO] Successed connect to server /10.8.94.94:20882 from NettyClient 10.8.94.94 using dubbo version 2.6.1, channel is NettyChannel [channel=[id: 0x0f3e7bcb, /10.8.94.94:55488 => /10.8.94.94:20882]], dubbo version: 2.6.1, current host: 10.8.94.94
+
+
+[INFO ] 2018-04-28 17:05:34,830 method:com.alibaba.dubbo.remoting.transport.AbstractClient.<init>(AbstractClient.java:91)
+ [DUBBO] Start NettyClient Eason-MBP.local/10.8.94.94 connect to the server /10.8.94.94:20882, dubbo version: 2.6.1, current host: 10.8.94.94
+
+
+[INFO ] 2018-04-28 17:05:34,872 method:com.alibaba.dubbo.config.ReferenceConfig.createProxy(ReferenceConfig.java:425)
+ [DUBBO] Refer dubbo service cn.e3mall.search.service.SearchService from url zookeeper://localhost:2181/com.alibaba.dubbo.registry.RegistryService?anyhost=true&application=e3-search-web&check=false&dubbo=2.6.1&generic=false&interface=cn.e3mall.search.service.SearchService&methods=search&pid=7636&register.ip=10.8.94.94&remote.timestamp=1524906196053&revision=1.0-SNAPSHOT&side=consumer&timeout=600000&timestamp=1524906314443, dubbo version: 2.6.1, current host: 10.8.94.94
+
+
+[INFO ] 2018-04-28 17:05:35,050 method:org.springframework.web.servlet.handler.AbstractHandlerMethodMapping$MappingRegistry.register(AbstractHandlerMethodMapping.java:547)
+Mapped "{[/search]}" onto public java.lang.String cn.e3mall.search.controller.SearchController.searchItemList(java.lang.String,java.lang.Integer,org.springframework.ui.Model) throws java.lang.Exception
+
+
+[INFO ] 2018-04-28 17:05:35,270 method:org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.initControllerAdviceCache(RequestMappingHandlerAdapter.java:574)
+Looking for @ControllerAdvice: WebApplicationContext for namespace 'e3-search-web-servlet': startup date [Sat Apr 28 17:05:13 CST 2018]; root of context hierarchy
+
+
+[INFO ] 2018-04-28 17:05:35,316 method:org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.initControllerAdviceCache(RequestMappingHandlerAdapter.java:574)
+Looking for @ControllerAdvice: WebApplicationContext for namespace 'e3-search-web-servlet': startup date [Sat Apr 28 17:05:13 CST 2018]; root of context hierarchy
+
+
+[INFO ] 2018-04-28 17:05:35,409 method:org.springframework.web.servlet.FrameworkServlet.initServletBean(FrameworkServlet.java:509)
+FrameworkServlet 'e3-search-web': initialization completed in 21548 ms
+
+
+[INFO ] 2018-04-28 17:07:43,098 method:org.springframework.web.servlet.FrameworkServlet.initServletBean(FrameworkServlet.java:494)
+FrameworkServlet 'e3-search-web': initialization started
+
+
+[INFO ] 2018-04-28 17:07:43,118 method:org.springframework.context.support.AbstractApplicationContext.prepareRefresh(AbstractApplicationContext.java:590)
+Refreshing WebApplicationContext for namespace 'e3-search-web-servlet': startup date [Sat Apr 28 17:07:43 CST 2018]; root of context hierarchy
+
+
+[INFO ] 2018-04-28 17:07:43,145 method:org.springframework.beans.factory.xml.XmlBeanDefinitionReader.loadBeanDefinitions(XmlBeanDefinitionReader.java:316)
+Loading XML bean definitions from class path resource [spring/springmvc.xml]
+
+
+[INFO ] 2018-04-28 17:07:43,344 method:
+using logger: com.alibaba.dubbo.common.logger.log4j.Log4jLoggerAdapter
+
+
+[INFO ] 2018-04-28 17:07:43,460 method:org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.<init>(AutowiredAnnotationBeanPostProcessor.java:154)
+JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
