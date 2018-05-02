@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.Writer;
@@ -30,7 +31,7 @@ public class HtmlGenController {
 
     @RequestMapping("/genhtml")
     @ResponseBody
-    public String genHtml() throws Exception {
+    public String genHtml(HttpServletRequest request) throws Exception {
         Configuration configuration = freeMarkerConfigurer.getConfiguration();
         //加载模板对象
         Template template = configuration.getTemplate("hello.ftl");
@@ -38,7 +39,8 @@ public class HtmlGenController {
         Map data = new HashMap<>();
         data.put("hello", 123456);
         //指定文件输出的路径及文件名
-        Writer out = new FileWriter(new File("freemarker/hell2.html"));
+        String root = request.getServletContext().getRealPath("");
+        Writer out = new FileWriter(new File(root + "/freemarker/hell2.html"));
         //输出文件
         template.process(data, out);
         //关闭流
