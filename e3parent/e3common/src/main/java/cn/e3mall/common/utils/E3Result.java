@@ -6,18 +6,28 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.Serializable;
 import java.util.List;
 
-public class E3Result implements Serializable{
+/**
+ * @author Eason
+ */
+public class E3Result implements Serializable {
 
-    // 定义jackson对象
+    /**
+     * 定义jackson对象
+     */
     private static final ObjectMapper MAPPER = new ObjectMapper();
 
-    // 响应业务状态
+    /**
+     * 响应业务状态
+     */
     private Integer status;
-
-    // 响应消息
+    /**
+     * 响应消息
+     */
     private String msg;
 
-    // 响应中的数据
+    /**
+     * 响应中的数据
+     */
     private Object data;
 
     public static E3Result build(Integer status, String msg, Object data) {
@@ -82,9 +92,9 @@ public class E3Result implements Serializable{
 
     /**
      * 将json结果集转化为TaotaoResult对象
-     * 
+     *
      * @param jsonData json数据
-     * @param clazz TaotaoResult中的object类型
+     * @param clazz    TaotaoResult中的object类型
      * @return
      */
     public static E3Result formatToPojo(String jsonData, Class<?> clazz) {
@@ -110,7 +120,7 @@ public class E3Result implements Serializable{
 
     /**
      * 没有object对象的转化
-     * 
+     *
      * @param json
      * @return
      */
@@ -125,9 +135,9 @@ public class E3Result implements Serializable{
 
     /**
      * Object是集合转化
-     * 
+     *
      * @param jsonData json数据
-     * @param clazz 集合中的类型
+     * @param clazz    集合中的类型
      * @return
      */
     public static E3Result formatToList(String jsonData, Class<?> clazz) {
@@ -137,7 +147,7 @@ public class E3Result implements Serializable{
             Object obj = null;
             if (data.isArray() && data.size() > 0) {
                 obj = MAPPER.readValue(data.traverse(),
-                        MAPPER.getTypeFactory().constructCollectionType(List.class, clazz));
+                    MAPPER.getTypeFactory().constructCollectionType(List.class, clazz));
             }
             return build(jsonNode.get("status").intValue(), jsonNode.get("msg").asText(), obj);
         } catch (Exception e) {

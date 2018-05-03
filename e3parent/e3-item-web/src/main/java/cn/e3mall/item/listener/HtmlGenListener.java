@@ -69,7 +69,5 @@ public class HtmlGenListener implements MessageListener {
         } catch (Exception e) {
             // TODO: handle exception
         }
-
     }
-
 }
