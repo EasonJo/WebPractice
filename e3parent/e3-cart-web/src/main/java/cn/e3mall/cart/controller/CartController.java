@@ -39,7 +39,7 @@ public class CartController {
     private CartService cartService;
 
     @RequestMapping("/cart/add/{itemId}")
-    public String addCart(@PathVariable Long itemId, @RequestParam(defaultValue = "1") Integer num,
+        public String addCart(@PathVariable Long itemId, @RequestParam(defaultValue = "1") Integer num,
                           HttpServletRequest request, HttpServletResponse response) {
         //判断用户是否登录
         TbUser user = (TbUser) request.getAttribute("user");

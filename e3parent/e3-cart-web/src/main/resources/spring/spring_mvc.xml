@@ -10,7 +10,6 @@
     <context:property-placeholder location="classpath:conf/*.properties" />
 
     <context:component-scan base-package="cn.e3mall.cart.controller" />
-
     <mvc:annotation-driven />
 
     <!--视图解析器-->
