@@ -1,4 +1,4 @@
-jQuery.cookie = function(name, value, options) {
+jQuery.cookie = function (name, value, options) {
     if (typeof value != 'undefined') {
         options = options || {};
         if (value === null) {
@@ -11,7 +11,7 @@ jQuery.cookie = function(name, value, options) {
             var date;
             if (typeof options.expires == 'number') {
                 date = new Date();
-                date.setTime(date.getTime() + (options.expires  * 60 * 60 * 1000));
+                date.setTime(date.getTime() + (options.expires * 60 * 60 * 1000));
             } else {
                 date = options.expires;
             }

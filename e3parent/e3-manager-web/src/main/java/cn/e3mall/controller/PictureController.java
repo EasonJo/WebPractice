@@ -28,7 +28,7 @@ public class PictureController {
      * @param multipartFile {@link MultipartFile}
      * @return map
      */
-    @RequestMapping(value = "" ,produces = MediaType.TEXT_PLAIN_VALUE + ";charset=utf-8 ")
+    @RequestMapping(value = "", produces = MediaType.TEXT_PLAIN_VALUE + ";charset=utf-8 ")
     @ResponseBody
     public Map uploadFile(MultipartFile multipartFile) {
 

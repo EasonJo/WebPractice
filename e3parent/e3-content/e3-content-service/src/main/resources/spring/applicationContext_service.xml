@@ -1,25 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xmlns:context="http://www.springframework.org/schema/context" xmlns:p="http://www.springframework.org/schema/p"
-    xmlns:tx="http://www.springframework.org/schema/tx" xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+<beans default-lazy-init="false" xmlns="http://www.springframework.org/schema/beans"
+    xmlns:context="http://www.springframework.org/schema/context" xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+    xmlns:p="http://www.springframework.org/schema/p" xmlns:tx="http://www.springframework.org/schema/tx"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://www.springframework.org/schema/beans
 			http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context
-			 http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd http://code.alibabatech.com/schema/dubbo http://code.alibabatech.com/schema/dubbo/dubbo.xsd"
-    default-lazy-init="false">
+			 http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd http://code.alibabatech.com/schema/dubbo http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
 
     <context:component-scan base-package="cn.e3mall.content.service.impl" />
 
-    <context:property-placeholder location="classpath:conf/*.properties"/>
+    <context:property-placeholder location="classpath:conf/*.properties" />
     <!--配置事务-->
     <!-- 事务管理器 -->
-    <bean id="txManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager"
+    <bean class="org.springframework.jdbc.datasource.DataSourceTransactionManager" id="txManager"
         p:dataSource-ref="datasource" />
     <tx:annotation-driven transaction-manager="txManager" />
 
     <!--发布的服务名字-->
     <dubbo:application name="e3-content" />
     <!--服务注册中心的地址，集群环境下可以指定多个 address-->
-    <dubbo:registry protocol="zookeeper" address="localhost:2181" />
+    <dubbo:registry address="localhost:2181" protocol="zookeeper" />
 
     <!--用 dubbo 协议在端口发布服务-->
     <dubbo:protocol name="dubbo" port="20881" />

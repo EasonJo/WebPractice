@@ -3,8 +3,8 @@
     xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.2.xsd">
 
     <!-- 单机版solrJ -->
-     <bean id="httpSolrServer" class="org.apache.solr.client.solrj.impl.HttpSolrServer">
-        <constructor-arg index="0" value="http://localhost:8080/solr/collection1"/>
+    <bean class="org.apache.solr.client.solrj.impl.HttpSolrServer" id="httpSolrServer">
+        <constructor-arg index="0" value="http://localhost:8080/solr/collection1" />
     </bean>
     <!-- 集群版solrJ -->
     <!--<bean id="cloudSolrServer" class="org.apache.solr.client.solrj.impl.CloudSolrServer">

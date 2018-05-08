@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xmlns:context="http://www.springframework.org/schema/context" xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
-    xmlns:mvc="http://www.springframework.org/schema/mvc" xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.2.xsd
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:context="http://www.springframework.org/schema/context"
+    xmlns:dubbo="http://code.alibabatech.com/schema/dubbo" xmlns:mvc="http://www.springframework.org/schema/mvc"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.2.xsd
 		http://code.alibabatech.com/schema/dubbo http://code.alibabatech.com/schema/dubbo/dubbo.xsd
         http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.2.xsd
         http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.2.xsd">
@@ -18,16 +18,16 @@
     </bean>
 
     <!--静态资源映射-->
-    <mvc:resources mapping="/css/**" location="/css/" />
-    <mvc:resources mapping="/js/**" location="/js/" />
-    <mvc:resources mapping="/images/**" location="/images/" />
+    <mvc:resources location="/css/" mapping="/css/**" />
+    <mvc:resources location="/js/" mapping="/js/**" />
+    <mvc:resources location="/images/" mapping="/images/**" />
     <!--全局异常处理器-->
     <!--<bean class="cn.e3mall.search.exception.GlobalExceptionResolver"/>-->
 
     <!-- 引用dubbo服务 -->
     <dubbo:application name="e3-sso-web" />
-    <dubbo:registry protocol="zookeeper" address="localhost:2181" />
-    <dubbo:reference interface="cn.e3mall.sso.service.RegisterService" id="registerService" />
-    <dubbo:reference interface="cn.e3mall.sso.service.LoginService" id="loginService" />
-    <dubbo:reference interface="cn.e3mall.sso.service.TokenService" id="tokenService" />
+    <dubbo:registry address="localhost:2181" protocol="zookeeper" />
+    <dubbo:reference id="registerService" interface="cn.e3mall.sso.service.RegisterService" />
+    <dubbo:reference id="loginService" interface="cn.e3mall.sso.service.LoginService" />
+    <dubbo:reference id="tokenService" interface="cn.e3mall.sso.service.TokenService" />
 </beans>

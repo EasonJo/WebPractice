@@ -6,8 +6,8 @@ import java.util.List;
 
 public interface ItemMapper {
 
-	List<SearchItem> getItemList();
+    List<SearchItem> getItemList();
 
 
-	SearchItem getItemById(long itemId);
+    SearchItem getItemById(long itemId);
 }

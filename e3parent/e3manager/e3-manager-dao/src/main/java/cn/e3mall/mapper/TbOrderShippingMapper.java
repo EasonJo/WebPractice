@@ -2,8 +2,9 @@ package cn.e3mall.mapper;
 
 import cn.e3mall.pojo.TbOrderShipping;
 import cn.e3mall.pojo.TbOrderShippingExample;
-import java.util.List;
 import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
 
 public interface TbOrderShippingMapper {
     int countByExample(TbOrderShippingExample example);

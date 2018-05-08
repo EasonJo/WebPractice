@@ -20,7 +20,7 @@
         this.target = ___target;
         var _this = this;
 
-        $(document).ready(function () {         
+        $(document).ready(function () {
             _this.target.bind("keypress", function (_event) {
                 var e = _event || window.event;
                 var kc = e.keyCode || e.which;
@@ -34,7 +34,7 @@
             _this.target.bind("keydown", function (_event) {
                 var e = _event || window.event;
                 var kc = e.keyCode || e.which;
-                if (kc == 20 && null != $.fn.capsLockTip.capsLockActived){
+                if (kc == 20 && null != $.fn.capsLockTip.capsLockActived) {
                     $.fn.capsLockTip.capsLockActived = !$.fn.capsLockTip.capsLockActived;
                     _this.showTips($.fn.capsLockTip.capsLockActived);
                 }
@@ -51,8 +51,8 @@
         });
 
         //创建显示大写锁定的div。
-        this.createTooltip = function(){
-            if(null != $.fn.capsLockTip.divTip)
+        this.createTooltip = function () {
+            if (null != $.fn.capsLockTip.divTip)
                 return $.fn.capsLockTip.divTip;
 
             $("body").append("<div id='divTip_985' class='caplock'></div>");

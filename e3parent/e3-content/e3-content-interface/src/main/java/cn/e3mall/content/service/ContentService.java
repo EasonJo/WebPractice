@@ -13,6 +13,7 @@ public interface ContentService {
 
     /**
      * 添加商品信息
+     *
      * @param content {@link TbContent} 商品信息
      * @return {@link E3Result} 结果封装集
      */

@@ -20,8 +20,7 @@
     </bean>
 
     <!-- 配置freemarker -->
-    <bean id="freemarkerConfig"
-        class="org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer">
+    <bean class="org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer" id="freemarkerConfig">
         <property name="templateLoaderPath" value="/WEB-INF/ftl/" />
         <property name="defaultEncoding" value="UTF-8" />
     </bean>
@@ -31,5 +30,5 @@
     <dubbo:registry address="localhost:2181" protocol="zookeeper" />
     <dubbo:reference id="itemService" interface="cn.e3mall.service.ItemService" />
 
-    <import resource="applicationContext-activemq.xml"/>
+    <import resource="applicationContext-activemq.xml" />
 </beans>

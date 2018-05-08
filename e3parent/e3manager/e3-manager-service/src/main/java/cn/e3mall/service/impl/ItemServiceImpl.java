@@ -62,7 +62,7 @@ public class ItemServiceImpl implements ItemService {
         try {
             //cache
             String json = jedisClient.get(REDIS_ITEM_PRE + itemId + ":BASE");
-            if (StringUtils.isNotBlank(json)){
+            if (StringUtils.isNotBlank(json)) {
                 TbItem tbItem = JsonUtils.jsonToPojo(json, TbItem.class);
                 return tbItem;
             }
@@ -148,7 +148,7 @@ public class ItemServiceImpl implements ItemService {
         //查询缓存
         try {
             String json = jedisClient.get(REDIS_ITEM_PRE + ":" + itemId + ":DESC");
-            if(StringUtils.isNotBlank(json)) {
+            if (StringUtils.isNotBlank(json)) {
                 return JsonUtils.jsonToPojo(json, TbItemDesc.class);
             }
         } catch (Exception e) {

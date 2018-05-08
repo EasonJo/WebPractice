@@ -61,7 +61,7 @@ public class ContentCategoryServiceImpl implements ContentCategoryService {
 
         TbContentCategory parent = tbContentCategoryMapper.selectByPrimaryKey(parentId);
 
-        if (!parent.getIsParent()){
+        if (!parent.getIsParent()) {
             parent.setIsParent(true);
             tbContentCategoryMapper.updateByPrimaryKey(parent);
         }

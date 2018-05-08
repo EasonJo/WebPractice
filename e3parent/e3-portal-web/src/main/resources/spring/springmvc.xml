@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<beans xmlns="http://www.springframework.org/schema/beans" xmlns:context="http://www.springframework.org/schema/context"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
-    xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
-    xmlns:duboo="http://code.alibabatech.com/schema/dubbo" xsi:schemaLocation="http://www.springframework.org/schema/beans
+<beans default-autowire="byName" xmlns="http://www.springframework.org/schema/beans"
+    xmlns:context="http://www.springframework.org/schema/context" xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+    xmlns:duboo="http://code.alibabatech.com/schema/dubbo" xmlns:mvc="http://www.springframework.org/schema/mvc"
+    xmlns:p="http://www.springframework.org/schema/p" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
             http://www.springframework.org/schema/beans/spring-beans.xsd
             http://www.springframework.org/schema/context
-            http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd http://code.alibabatech.com/schema/dubbo http://code.alibabatech.com/schema/dubbo/dubbo.xsd"
-    default-autowire="byName">
+            http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd http://code.alibabatech.com/schema/dubbo http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
 
     <context:component-scan base-package="cn.e3mall.portal.controller" />
     <!-- 注解驱动 -->
     <mvc:annotation-driven />
 
-    <context:property-placeholder location="classpath:conf/resource.properties"/>
+    <context:property-placeholder location="classpath:conf/resource.properties" />
 
     <!-- 配置Conveter转换器  转换工厂 （日期、去掉前后空格)
     <bean class="org.springframework.format.support.FormattingConversionServiceFactoryBean"
@@ -28,8 +28,8 @@
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver" p:suffix=".jsp" />
 
     <!--静态资源映射-->
-    <mvc:resources mapping="/css/**" location="/css/" />
-    <mvc:resources mapping="/js/**" location="/js/" />
+    <mvc:resources location="/css/" mapping="/css/**" />
+    <mvc:resources location="/js/" mapping="/js/**" />
 
 
     <!--  &lt;!&ndash;拦截器&ndash;&gt;
@@ -45,10 +45,10 @@
     <dubbo:application name="e3-portal-web" />
 
     <!--注册中心地址-->
-    <duboo:registry protocol="zookeeper" address="localhost:2181" />
+    <duboo:registry address="localhost:2181" protocol="zookeeper" />
 
     <!--使用的服务名称,会从服务中心找 Id 对应的服务-->
-    <dubbo:reference interface="cn.e3mall.content.service.ContentService" id="contentService" />
+    <dubbo:reference id="contentService" interface="cn.e3mall.content.service.ContentService" />
     <!--<dubbo:reference interface="cn.e3mall.service.ItemCatService" id="itemCatService" />-->
 
 </beans>

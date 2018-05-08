@@ -25,8 +25,8 @@ public class IndexController {
 
     @RequestMapping("/index")
     public String showIndex(Model model) {
-       List<TbContent> tbContents =  contentService.getContentListByCid(cid);
-        model.addAttribute("ad1List",tbContents);
+        List<TbContent> tbContents = contentService.getContentListByCid(cid);
+        model.addAttribute("ad1List", tbContents);
         return "index";
     }
 }

@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<beans default-lazy-init="false" xmlns="http://www.springframework.org/schema/beans"
     xmlns:context="http://www.springframework.org/schema/context" xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://www.springframework.org/schema/beans
 			http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context
-			 http://www.springframework.org/schema/context/spring-context.xsd   http://code.alibabatech.com/schema/dubbo http://code.alibabatech.com/schema/dubbo/dubbo.xsd"
-    default-lazy-init="false">
+			 http://www.springframework.org/schema/context/spring-context.xsd   http://code.alibabatech.com/schema/dubbo http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
 
-    <context:property-placeholder location="classpath:conf/*.properties"/>
+    <context:property-placeholder location="classpath:conf/*.properties" />
 
     <context:component-scan base-package="cn.e3mall.sso.service.impl" />
 
     <!--发布的服务名字-->
     <dubbo:application name="e3-manager" />
     <!--服务注册中心的地址，集群环境下可以指定多个 address-->
-    <dubbo:registry protocol="zookeeper" address="localhost:2181" />
+    <dubbo:registry address="localhost:2181" protocol="zookeeper" />
 
     <!--用 dubbo 协议在端口发布服务-->
     <dubbo:protocol name="dubbo" port="20883" />

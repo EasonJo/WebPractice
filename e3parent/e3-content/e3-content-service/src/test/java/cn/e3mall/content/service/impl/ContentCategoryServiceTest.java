@@ -24,7 +24,7 @@ public class ContentCategoryServiceTest {
 
     @Test
     public void getContentCatListTest() {
-        List<EasyUITreeNote> easyUITreeNoteList =  contentCategoryService.getContentCatList(0l);
+        List<EasyUITreeNote> easyUITreeNoteList = contentCategoryService.getContentCatList(0l);
         System.out.println(easyUITreeNoteList);
     }
 }

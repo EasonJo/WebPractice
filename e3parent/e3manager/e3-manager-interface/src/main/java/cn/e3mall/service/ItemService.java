@@ -29,11 +29,12 @@ public interface ItemService {
 
     /**
      * 插入商品信息
+     *
      * @param item {@link TbItem}
      * @param desc 商品描述
      * @return 插入的商品
      */
-    E3Result addItem(TbItem item,String desc);
+    E3Result addItem(TbItem item, String desc);
 
     TbItemDesc getItemDescById(long itemId);
 }

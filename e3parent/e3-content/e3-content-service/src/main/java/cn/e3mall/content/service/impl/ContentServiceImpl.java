@@ -26,7 +26,7 @@ public class ContentServiceImpl implements ContentService {
     @Resource(name = "jedisClientPool")
     private JedisClient jedisClient;
 
-//    @Value(value = "${CONTENT_LIST}")
+    //    @Value(value = "${CONTENT_LIST}")
     private String CONTENT_LIST = "CONTENT_LIST";
 
     @Override
@@ -38,7 +38,7 @@ public class ContentServiceImpl implements ContentService {
         tbContentMapper.insert(content);
 
         //缓存同步,删除缓存中对应的数据
-        jedisClient.hdel(CONTENT_LIST,content.getCategoryId().toString());
+        jedisClient.hdel(CONTENT_LIST, content.getCategoryId().toString());
 
         return E3Result.ok();
     }

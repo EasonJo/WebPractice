@@ -12,20 +12,21 @@ import javax.annotation.Resource;
  * 导入商品数据到索引库
  * <p>Title: SearchItemController</p>
  * <p>Description: </p>
- * <p>Company: www.itcast.cn</p> 
+ * <p>Company: www.itcast.cn</p>
+ *
  * @version 1.0
  */
 @Controller
 public class SearchItemController {
-	
-	@Resource(name = "searchItemService")
-	private SearchItemService searchItemService;
 
-	@RequestMapping("/index/item/import")
-	@ResponseBody
-	public E3Result importItemList() {
-		E3Result e3Result = searchItemService.importAllItems();
-		return e3Result;
-		
-	}
+    @Resource(name = "searchItemService")
+    private SearchItemService searchItemService;
+
+    @RequestMapping("/index/item/import")
+    @ResponseBody
+    public E3Result importItemList() {
+        E3Result e3Result = searchItemService.importAllItems();
+        return e3Result;
+
+    }
 }

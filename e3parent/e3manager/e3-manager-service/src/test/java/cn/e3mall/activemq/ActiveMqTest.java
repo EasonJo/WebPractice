@@ -26,6 +26,7 @@ public class ActiveMqTest {
      * 点到点形式发送消息
      * <p>Title: testQueueProducer</p>
      * <p>Description: </p>
+     *
      * @throws Exception
      */
     //@Test
@@ -58,6 +59,7 @@ public class ActiveMqTest {
 
     /**
      * 测试消费者,点对点消费
+     *
      * @throws Exception
      */
     //@Test
@@ -101,6 +103,7 @@ public class ActiveMqTest {
 
     /**
      * 使用广播的方式来发送消息,可以被多个消费者接到的
+     *
      * @throws Exception
      */
     //@Test

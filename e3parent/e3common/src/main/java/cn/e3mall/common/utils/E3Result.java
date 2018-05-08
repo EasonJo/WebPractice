@@ -30,24 +30,8 @@ public class E3Result implements Serializable {
      */
     private Object data;
 
-    public static E3Result build(Integer status, String msg, Object data) {
-        return new E3Result(status, msg, data);
-    }
-
-    public static E3Result ok(Object data) {
-        return new E3Result(data);
-    }
-
-    public static E3Result ok() {
-        return new E3Result(null);
-    }
-
     public E3Result() {
 
-    }
-
-    public static E3Result build(Integer status, String msg) {
-        return new E3Result(status, msg, null);
     }
 
     public E3Result(Integer status, String msg, Object data) {
@@ -62,33 +46,25 @@ public class E3Result implements Serializable {
         this.data = data;
     }
 
+    public static E3Result build(Integer status, String msg, Object data) {
+        return new E3Result(status, msg, data);
+    }
+
+    public static E3Result ok(Object data) {
+        return new E3Result(data);
+    }
+
+    public static E3Result ok() {
+        return new E3Result(null);
+    }
+
+    public static E3Result build(Integer status, String msg) {
+        return new E3Result(status, msg, null);
+    }
+
 //    public Boolean isOK() {
 //        return this.status == 200;
 //    }
-
-    public Integer getStatus() {
-        return status;
-    }
-
-    public void setStatus(Integer status) {
-        this.status = status;
-    }
-
-    public String getMsg() {
-        return msg;
-    }
-
-    public void setMsg(String msg) {
-        this.msg = msg;
-    }
-
-    public Object getData() {
-        return data;
-    }
-
-    public void setData(Object data) {
-        this.data = data;
-    }
 
     /**
      * 将json结果集转化为TaotaoResult对象
@@ -153,6 +129,30 @@ public class E3Result implements Serializable {
         } catch (Exception e) {
             return null;
         }
+    }
+
+    public Integer getStatus() {
+        return status;
+    }
+
+    public void setStatus(Integer status) {
+        this.status = status;
+    }
+
+    public String getMsg() {
+        return msg;
+    }
+
+    public void setMsg(String msg) {
+        this.msg = msg;
+    }
+
+    public Object getData() {
+        return data;
+    }
+
+    public void setData(Object data) {
+        this.data = data;
     }
 
 }

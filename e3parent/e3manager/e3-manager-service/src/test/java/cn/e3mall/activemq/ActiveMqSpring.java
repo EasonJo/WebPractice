@@ -19,7 +19,7 @@ import javax.jms.Topic;
  * @date Create in 11:09 28/04/2018
  */
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration({"classpath:applicationContext_service.xml","classpath:applicationContext_mybatis.xml"})
+@ContextConfiguration({"classpath:applicationContext_service.xml", "classpath:applicationContext_mybatis.xml"})
 public class ActiveMqSpring {
 
     @Resource(name = "jmsTemplate")
@@ -33,7 +33,7 @@ public class ActiveMqSpring {
 
 
     @Test
-    public void sendMessage(){
+    public void sendMessage() {
         jmsTemplate.send(queueDestination, new MessageCreator() {
             @Override
             public Message createMessage(Session session) throws JMSException {
@@ -41,7 +41,6 @@ public class ActiveMqSpring {
             }
         });
     }
-
 
 
 }

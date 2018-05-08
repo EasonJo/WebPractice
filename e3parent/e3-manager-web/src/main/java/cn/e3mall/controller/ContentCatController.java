@@ -29,9 +29,9 @@ public class ContentCatController {
         return contentCategoryService.getContentCatList(parentId);
     }
 
-    @RequestMapping(value = "/content/category/create",method = RequestMethod.POST)
+    @RequestMapping(value = "/content/category/create", method = RequestMethod.POST)
     @ResponseBody
-    public E3Result createContentCategory(Long parenId,String name){
-        return contentCategoryService.addContentCategory(parenId,name);
+    public E3Result createContentCategory(Long parenId, String name) {
+        return contentCategoryService.addContentCategory(parenId, name);
     }
 }
