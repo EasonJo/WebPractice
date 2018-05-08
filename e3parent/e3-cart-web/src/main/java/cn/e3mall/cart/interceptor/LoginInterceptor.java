@@ -14,11 +14,8 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  * 用户登录处理拦截器
- * <p>Title: LoginInterceptor</p>
- * <p>Description: </p>
- * <p>Company: www.itcast.cn</p>
  *
- * @version 1.0
+ * @author Eason
  */
 public class LoginInterceptor implements HandlerInterceptor {
 

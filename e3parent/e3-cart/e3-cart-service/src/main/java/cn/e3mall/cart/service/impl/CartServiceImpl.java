@@ -16,11 +16,8 @@ import java.util.List;
 
 /**
  * 购物车处理服务
- * <p>Title: CartServiceImpl</p>
- * <p>Description: </p>
- * <p>Company: www.itcast.cn</p>
  *
- * @version 1.0
+ * @author Eason
  */
 @Service("cartService")
 public class CartServiceImpl implements CartService {
@@ -109,5 +106,11 @@ public class CartServiceImpl implements CartService {
         return E3Result.ok();
     }
 
+    @Override
+    public E3Result clearCartItem(long userId) {
+        //删除购物车信息
+        jedisClient.del(REDIS_CART_PRE + ":" + userId);
+        return E3Result.ok();
+    }
 
 }
