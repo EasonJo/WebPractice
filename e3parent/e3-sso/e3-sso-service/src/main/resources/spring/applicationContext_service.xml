@@ -16,7 +16,7 @@
     <dubbo:registry address="localhost:2181" protocol="zookeeper" />
 
     <!--用 dubbo 协议在端口发布服务-->
-    <dubbo:protocol name="dubbo" port="20883" />
+    <dubbo:protocol name="dubbo" port="20885" />
     <!--声明需要暴露的服务接口-->
     <dubbo:service interface="cn.e3mall.sso.service.RegisterService" ref="registerService" />
     <dubbo:service interface="cn.e3mall.sso.service.LoginService" ref="loginService" />

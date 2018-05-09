@@ -14,7 +14,6 @@
     <packaging>war</packaging>
 
     <dependencies>
-
         <dependency>
             <groupId>cn.e3mall</groupId>
             <artifactId>e3-manager-inteface</artifactId>
