@@ -257,6 +257,20 @@
         </dependencies>
     </dependencyManagement>
 
+    <!-- 配置部署的远程仓库 -->
+    <distributionManagement>
+        <snapshotRepository>
+            <id>nexus-snapshots</id>
+            <name>Nexus Snapshot Repository</name>
+            <url>http://10.8.50.199:8083/repository/kdxc_maven_SNAPSHOT/</url>
+        </snapshotRepository>
+        <repository>
+            <id>nexus-releases</id>
+            <name>Nexus Release Repository</name>
+            <url>http://10.8.50.199:8083/repository/kdxc_maven_RELEASE/</url>
+        </repository>
+    </distributionManagement>
+
     <build>
         <finalName>${project.artifactId}</finalName>
         <plugins>
